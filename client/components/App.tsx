@@ -1,13 +1,19 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import { Outlet } from 'react-router-dom'
+import Nav from './Nav'
 
 function App() {
-  const { data } = useFruits()
-
   return (
     <>
       <div className="app">
-        <h1>Fullstack Boilerplate - with Fruits!</h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+        <header>
+          <Nav />
+        </header>
+        <main className="main">
+          <img src="public/images/logo.png" alt="DirtRider Logo"></img>
+          <h1>Coming Soon!</h1>
+          <Outlet />
+        </main>
+        <footer></footer>
       </div>
     </>
   )
