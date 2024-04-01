@@ -54,13 +54,17 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
-  display: flex;
+
   height: 45rem;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  flex-direction: column;
 }
 
+.button {
+  margin: 15%;
+}
 .home-main {
   display: flex;
   flex-direction: column;
@@ -88,6 +92,7 @@ body {
 
 .searchbar {
   display: flex;
+
   justify-content: center;
   background-color: #0968a4;
   border-radius: 10%;
