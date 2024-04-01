@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
+import Homepage from './Homepage'
 
 function App() {
   return (
@@ -9,9 +10,8 @@ function App() {
           <Nav />
         </header>
         <main className="main">
-          <img src="public/images/logo.png" alt="DirtRider Logo"></img>
           <h1>Coming Soon!</h1>
-          <Outlet />
+          <Homepage />
         </main>
         <footer></footer>
       </div>

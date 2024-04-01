@@ -12,6 +12,21 @@ body {
   align-items: center;
 }
 
+.logo {
+  width: 15%;
+  /* height: auto; */
+}
+
+.nav-layout {
+  display: flex;
+  height: 50px;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-layout button {
+  height: 2rem;
+}
+
 /*-----DropDown menu ----*/
 
 .dd {
@@ -22,4 +37,50 @@ body {
 
 .dd-header {
   color: green;
+}
+
+.home-main-bg {
+  width: 100%;
+
+  background-image: url('../../images/mainpageBg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  display: flex;
+  height: 45rem;
+}
+
+.home-main {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.home-main-card {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 5%;
+}
+
+.home-main-card img {
+  width: 400px;
+  height: 500px;
+  border-radius: 15%;
+  padding: 5%;
+}
+
+@media screen and (max-width: 768px) {
+  .home-main-bg {
+    height: 25rem;
+  }
+  .home-main-card img {
+    width: 50%;
+    height: auto;
+  }
 }
