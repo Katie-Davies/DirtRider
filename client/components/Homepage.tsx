@@ -1,8 +1,12 @@
+import Searchbar from './Searchbar'
+
 function Homepage() {
   return (
     <>
       <div className="home-main">
-        <div className="home-main-bg"></div>
+        <div className="home-main-bg">
+          <Searchbar />
+        </div>
         <div className="home-main-card">
           <img
             src="public/images/mainpageSmallicon1.png"
@@ -14,10 +18,13 @@ function Homepage() {
           <h1>Riding with friends!</h1>
           <img
             src="public/images/mainpageSmallicon2.png"
-            alt="muddy bike wheel"
+            alt="two dirtbikes in field"
           />
         </div>
-        <div></div>
+        <div className="home-main-card">
+          <img src="public/images/mainpageSmallicon3.png" alt="muddy boot" />
+          <h1>No better feeling!</h1>
+        </div>
       </div>
     </>
   )

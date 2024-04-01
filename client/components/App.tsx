@@ -13,7 +13,9 @@ function App() {
           <h1>Coming Soon!</h1>
           <Homepage />
         </main>
-        <footer></footer>
+        <footer>
+          <p>DirtRider ltd 2024</p>
+        </footer>
       </div>
     </>
   )

@@ -3,6 +3,11 @@
 html,
 body {
   font-family: 'Montserrat', sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
 }
 
 .main {
@@ -14,6 +19,7 @@ body {
 
 .logo {
   width: 15%;
+  margin-left: 1rem;
   /* height: auto; */
 }
 
@@ -23,8 +29,10 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 .nav-layout button {
   height: 2rem;
+  margin-right: 1rem;
 }
 
 /*-----DropDown menu ----*/
@@ -48,6 +56,9 @@ body {
   background-position: center top;
   display: flex;
   height: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .home-main {
@@ -73,6 +84,15 @@ body {
   height: 500px;
   border-radius: 15%;
   padding: 5%;
+}
+
+footer {
+  height: 50px;
+  width: 100%;
+  background-color: #0968a4;
+  color: aliceblue;
+  display: flex;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
