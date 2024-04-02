@@ -13,6 +13,9 @@ export async function getBikeById(id: string) {
 }
 
 //POST add bikes
+export async function addBike(data) {
+  return await db('bikes').insert(data)
+}
 
 //PATCH update bike
 
