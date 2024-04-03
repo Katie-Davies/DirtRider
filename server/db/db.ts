@@ -31,3 +31,8 @@ export async function getUserById(id: User) {
 export async function updateUser(id: string, data: User) {
   return db('user').where({ id }).update(data)
 }
+
+//POST add user
+export async function addUser(data: User) {
+  return db('user').insert(data)
+}
