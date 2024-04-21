@@ -1,30 +1,22 @@
-# Boilerplate: Fullstack with Sass
+# DirtRider Fullstack with Sass
 
-## Setup
+A personal project that fills the gap in the market for hiring dirt bikes from individual people. 
 
-### What's included
+### User Story
 
-This repo includes:
-
-* a single, simple API endpoint (`/api/v1/fruits`)
-* a single React component (`<App />`)
-* an example database module (`server/db/fruits.js`)
-* an API client module (`client/apis/fruits.js`)
-* configuration for Vitest and testing library
-* configuration for server-side debugging in VS Code
-* configuration for preprocessing Sass
+* To view all available bikes
+* Search all bikes by make or engine size
+* To click and see more information about the bikes
+* See availability for bookings
+* Book a bike for hire 
+  
 
 ### Installation
-
-#### **From the Github UI**
-
-See the instructions [here](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/creating-a-repository-from-a-template) to use Github's feature to create a new repo from a template.
-
 #### **From the command line**
 
 ```
-git clone https://github.com/dev-academy-challenges/boilerplate-fullstack [your-project-name]
-cd [your-project-name]
+git clone 
+cd 
 npm install # to install dependencies
 npm run dev # to start the dev server
 ```
