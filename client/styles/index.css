@@ -16,6 +16,7 @@ body {
   margin: 0px;
   padding: 0px;
   overflow-x: hidden;
+  background-color: #e5e9f0;
 }
 
 .main {
@@ -66,7 +67,7 @@ body {
   height: 45rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   flex-direction: column;
 }
 

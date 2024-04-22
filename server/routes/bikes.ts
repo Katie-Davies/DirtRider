@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const fruits = await db.getAllFruits()
+    const fruits = await db.getAllBikes()
 
     res.json({ fruits: fruits.map((fruit) => fruit.name) })
   } catch (error) {
