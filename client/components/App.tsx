@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
-import Homepage from './Homepage'
+import Homepage from '../pages/Homepage'
 
 function App() {
   return (
@@ -10,8 +10,7 @@ function App() {
           <Nav />
         </header>
         <main className="main">
-          <h1>Coming Soon!</h1>
-          <Homepage />
+          <Outlet />
         </main>
         <footer>
           <p>DirtRider ltd 2024</p>

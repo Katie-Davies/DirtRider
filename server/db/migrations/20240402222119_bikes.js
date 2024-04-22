@@ -9,7 +9,7 @@ export function up(knex) {
     table.string('model').notNullable()
     table.string('engine_size').notNullable()
     table.integer('location')
-    table.string('owner_authid').references('authid').inTable('users')
+    table.string('user_authid').references('authid').inTable('users')
     table.integer('price')
     table.string('image')
   })
