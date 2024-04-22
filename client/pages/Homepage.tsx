@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Button from '../components/Button'
-import Searchbar from '../components/Searchbar'
 
 function Homepage() {
   return (
@@ -16,7 +15,7 @@ function Homepage() {
             </h1>
           </div>
           <Link to="/bikes">
-            <Button className="opacity-80 mt-10">View Bikes</Button>
+            <Button className="opacity-90 mt-10">View Bikes</Button>
           </Link>
         </div>
 
