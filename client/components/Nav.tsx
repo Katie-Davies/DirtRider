@@ -1,3 +1,4 @@
+import { Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 function Nav() {
@@ -6,13 +7,13 @@ function Nav() {
       <div className="nav-layout">
         <Link to="/">
           <img
-            src="public/images/logo.png"
+            src="/images/logo.png"
             alt="DirtRider Logo"
             className="logo"
           ></img>
         </Link>
 
-        <button>Dropdown menu</button>
+        <Button>Dropdown menu</Button>
       </div>
     </>
   )

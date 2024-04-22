@@ -1,3 +1,4 @@
+import Button from '../components/Button'
 import Searchbar from '../components/Searchbar'
 
 function Homepage() {
@@ -5,6 +6,7 @@ function Homepage() {
     <>
       <div className="home-main">
         <div className="home-main-bg">
+          <Button>Search Bikes</Button>
           <Searchbar />
         </div>
 
