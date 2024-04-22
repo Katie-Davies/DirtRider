@@ -46,16 +46,6 @@ body {
 
 /*-----DropDown menu ----*/
 
-.dd {
-  display: flex;
-  min-height: 38px;
-  flex-wrap: wrap;
-}
-
-.dd-header {
-  color: green;
-}
-
 .home-main-bg {
   width: 100%;
 
@@ -71,9 +61,6 @@ body {
   flex-direction: column;
 }
 
-.button {
-  margin: 15%;
-}
 .home-main {
   display: flex;
   flex-direction: column;

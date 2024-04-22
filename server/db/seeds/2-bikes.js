@@ -13,7 +13,7 @@ export async function seed(knex) {
       engine_size: '450cc',
       location: 12345,
       user_authid: 'johndoe123',
-      price: 8000,
+      price: 200,
       image: 'honda_crf450r.jpg',
     },
     {
@@ -23,7 +23,7 @@ export async function seed(knex) {
       engine_size: '250cc',
       location: 54321,
       user_authid: 'janesmith456',
-      price: 7500,
+      price: 150,
       image: 'yamaha_yz250f.jpg',
     },
     {
@@ -33,7 +33,7 @@ export async function seed(knex) {
       engine_size: '450cc',
       location: 98765,
       user_authid: 'michaeljohnson789',
-      price: 8200,
+      price: 250,
       image: 'kawasaki_kx450.jpg',
     },
     {
@@ -43,7 +43,7 @@ export async function seed(knex) {
       engine_size: '250cc',
       location: 24680,
       user_authid: 'emilybrown321',
-      price: 7200,
+      price: 200,
       image: 'suzuki_rmz250.jpg',
     },
   ])
