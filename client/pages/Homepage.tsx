@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Button from '../components/Button'
 import Searchbar from '../components/Searchbar'
 
@@ -6,8 +7,9 @@ function Homepage() {
     <>
       <div className="home-main">
         <div className="home-main-bg">
-          <Button>Search Bikes</Button>
-          <Searchbar />
+          <Link to="/bikes">
+            <Button>Search Bikes</Button>
+          </Link>
         </div>
 
         <div className="home-main-card">

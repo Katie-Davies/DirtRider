@@ -6,7 +6,8 @@ export default function Button(props: {
   children: ReactNode
 }) {
   const { onClick, className = '', children } = props
-  const defaultClasses = 'shadow-lg btn btn-primary text-white '
+  const defaultClasses =
+    'btn btn-primary sm:btn-sm md:btn-md  hover:btn-customBlue text-white'
 
   return (
     <button className={`${defaultClasses} ${className}`} onClick={onClick}>
