@@ -13,7 +13,7 @@ function App() {
           <Outlet />
         </main>
         <footer>
-          <p>DirtRider ltd 2024</p>
+          <p className="ml-10 text-darkBlue">DirtRider ltd 2024</p>
         </footer>
       </div>
     </>
