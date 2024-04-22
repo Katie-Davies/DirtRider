@@ -8,7 +8,7 @@ function Homepage() {
       <div className="home-main">
         <div className="home-main-bg">
           <Link to="/bikes">
-            <Button>Search Bikes</Button>
+            <Button className="opacity-80">View Bikes</Button>
           </Link>
         </div>
 
