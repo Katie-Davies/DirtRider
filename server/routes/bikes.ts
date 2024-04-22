@@ -6,9 +6,9 @@ const router = Router()
 
 router.get('/', async (req, res) => {
   try {
-    const fruits = await db.getAllBikes()
+    const bikes = await db.getAllBikes()
 
-    res.json({ fruits: fruits.map((fruit) => fruit.name) })
+    res.json(bikes)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'Something went wrong' })
