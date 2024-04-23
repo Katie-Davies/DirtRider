@@ -1,6 +1,10 @@
 # DirtRider Fullstack 
 
-A personal project that fills the gap in the market for hiring dirt bikes from individual people. 
+An in development personal project that fills the gap in the market for hiring dirt bikes from individual people. 
+
+## In Progress 
+I am currently learning how to implement this with Azure AD and SQL so I am able to deploy on Azure cloud. Keep checking in to see the progress! 
+
 
 ### User Story as Customer 
 
@@ -22,9 +26,11 @@ A personal project that fills the gap in the market for hiring dirt bikes from i
   * message customer
   * set available dates
 
+## Current setup
+
 ### Frontend set-up 
+* React.js
 * Routes using react-route-dom
-* User Login using Auth 0
 * Custom Hooks
 * Tailwind and Daisy UI for styling
 
