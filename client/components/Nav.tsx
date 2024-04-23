@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 function Nav() {
@@ -12,6 +11,8 @@ function Nav() {
             className="logo"
           ></img>
         </Link>
+        <button>Log in</button>
+
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
@@ -58,6 +59,14 @@ function Nav() {
                 className=" hover:bg-customBlue  focus:bg-customBlue"
               >
                 View Bikes
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="bikes"
+                className=" hover:bg-customBlue  focus:bg-customBlue"
+              >
+                Log out
               </Link>
             </li>
           </ul>
