@@ -17,7 +17,7 @@ function Bikes() {
   if (bikes)
     return (
       <div>
-        <h1 className="text-4xl text-center">Bikes</h1>
+        <h1 className="text-6xl text-center mb-5">Bikes</h1>
         <div className="flex flex-wrap justify-center">
           {bikes.map((bike, index) => {
             return (
@@ -33,7 +33,9 @@ function Bikes() {
                   <div className="card-body">
                     <h2 className="card-title">{bike.make}</h2>
                     <ul>
-                      <li>Model: {bike.model}</li>
+                      <li>
+                        <strong>Model:</strong> {bike.model}
+                      </li>
                       <li>Engine size: {bike.engine_size}</li>
 
                       <li>Location: {bike.location}</li>
