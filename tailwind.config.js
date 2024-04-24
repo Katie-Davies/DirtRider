@@ -13,7 +13,4 @@ export default {
     },
   },
   plugins: [require('daisyui')],
-  daisyui: {
-    themes: ['nord', 'dark', 'light'],
-  },
 }

@@ -17,21 +17,21 @@ function Bikes() {
   if (bikes)
     return (
       <div>
-        <h1 className="text-6xl text-center mb-5">Bikes</h1>
+        <h1 className="text-6xl text-center mb-5 text-darkBlue">Bikes</h1>
         <div className="flex flex-wrap justify-center">
           {bikes.map((bike, index) => {
             return (
               <div key={index}>
-                <div className="card bg-base-100 shadow-xl w-60 h-auto cursor-pointer relative m-5">
+                <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-64">
                   <figure>
                     <img
                       src={`/images/${bike.image}`}
                       alt={bike.model}
-                      className="ml-3 mt-3 h-40 w-64 rounded"
+                      className="ml-3 mt-3 h-40 w-4/5 rounded"
                     />
                   </figure>
                   <div className="card-body">
-                    <h2 className="card-title">{bike.make}</h2>
+                    <h2 className="card-title text-darkBlue">{bike.make}</h2>
                     <ul>
                       <li>
                         <strong>Model:</strong> {bike.model}
@@ -43,9 +43,7 @@ function Bikes() {
                     </ul>
 
                     <div className="card-actions justify-end">
-                      <button className="btn btn-sm btn-secondary ">
-                        Rent Now
-                      </button>
+                      <button className="btn btn-sm ">Rent Now</button>
                     </div>
                   </div>
                 </div>

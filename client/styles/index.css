@@ -28,6 +28,7 @@ body {
 
 li {
   font-family: 'Montserrat', sans-serif;
+  color: #000;
 }
 
 .main {
@@ -38,7 +39,7 @@ li {
 }
 
 .logo {
-  width: 15%;
+  width: 25%;
   margin-left: 1rem;
   /* height: auto; */
 }
