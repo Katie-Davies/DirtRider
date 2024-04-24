@@ -18,11 +18,11 @@ I am currently learning how to implement this with Azure AD and SQL so I am able
   * search by location -Google maps API
 
 ### User Story as Bike Host
-* Add a bike
+* Add a bike - images using Multer
 * manage bookings
 
   ## Stretch
-  * message customer
+  * messaging between host and customer using https://socket.io/
   * set available dates
 
 ## Current setup
