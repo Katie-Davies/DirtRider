@@ -10,7 +10,6 @@ I am currently learning how to implement this with Azure AD and SQL so I am able
 
 * To view all available bikes
 * Search all bikes by make or engine size
-* To click and see more information about the bikes
 * See availability for bookings
 * Book a bike for hire 
 
