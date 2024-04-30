@@ -46,6 +46,8 @@ I am currently learning how to implement this with Azure AD and SQL so I am able
 ```
 git clone git@github.com:Katie-Davies/DirtRider.git
 npm install # to install dependencies
+npm run knex migrate:latest
+npm run knex seed:run # to create database
 npm run dev # to start the dev server
 ```
 
