@@ -6,6 +6,7 @@ import AddBike from './pages/AddBike.tsx'
 import Booking from './pages/Booking.tsx'
 import Profile from './pages/Profile.tsx'
 import EditProfile from './pages/EditProfile.tsx'
+
 export default createRoutesFromElements(
   <>
     <Route path="/" element={<App />}>

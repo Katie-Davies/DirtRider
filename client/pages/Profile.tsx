@@ -13,6 +13,7 @@ function Profile() {
   const navigate = useNavigate()
 
   //need to get auth working to grab real data
+
   const handleClick = () => {
     navigate(`/profile/edit/${fakeData.id}`)
   }
