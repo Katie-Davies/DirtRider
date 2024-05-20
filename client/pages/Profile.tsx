@@ -1,4 +1,7 @@
+import { useNavigate } from 'react-router-dom'
+
 const fakeData = {
+  id: 1,
   userName: 'JohnnyDoe123',
   name: 'John Doe',
   email: 'johnDoe123@mail.com',
@@ -7,6 +10,13 @@ const fakeData = {
 }
 
 function Profile() {
+  const navigate = useNavigate()
+
+  //need to get auth working to grab real data
+  const handleClick = () => {
+    navigate(`/profile/edit/${fakeData.id}`)
+  }
+
   return (
     <div>
       <h1>Your Profile</h1>
@@ -18,7 +28,7 @@ function Profile() {
         <p>Location: {fakeData.location}</p>
       </div>
       <div>
-        <button>Edit Profile</button>
+        <button onClick={handleClick}>Edit Profile</button>
       </div>
     </div>
   )
