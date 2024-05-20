@@ -41,7 +41,12 @@ function Profile() {
           <p>Phone: {user.phone}</p>
         </div>
         <div>
-          <button onClick={handleClick}>Edit Profile</button>
+          <button
+            onClick={handleClick}
+            className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+          >
+            Edit Profile
+          </button>
         </div>
       </div>
     )
