@@ -8,7 +8,7 @@ export async function getAllBikes() {
   return bikes.body as Bikes[]
 }
 
-export async function getUserById(id: number) {
+export async function getUserById(id: string) {
   const user = await request.get(`${rootUrl}/users/${id}`)
-  return user.body as User
+  return user.body[0] as User
 }
