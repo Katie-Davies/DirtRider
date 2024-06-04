@@ -5,6 +5,8 @@ import Bikes from './pages/Bikes.tsx'
 import AddBike from './pages/AddBike.tsx'
 import Booking from './pages/Booking.tsx'
 import Profile from './pages/Profile.tsx'
+import EditProfile from './pages/EditProfile.tsx'
+
 export default createRoutesFromElements(
   <>
     <Route path="/" element={<App />}>
@@ -13,6 +15,7 @@ export default createRoutesFromElements(
       <Route path="bikes/add" element={<AddBike />} />
       <Route path="bikes/:id/booking" element={<Booking />} />
       <Route path="profile" element={<Profile />} />
+      <Route path="profile/edit/:id" element={<EditProfile />} />
     </Route>
   </>,
 )

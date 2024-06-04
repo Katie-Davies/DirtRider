@@ -9,7 +9,7 @@ export async function getAllBikes() {
 }
 
 //GET Bike by ID
-export async function getBikeById(id: string) {
+export async function getBikeById(id: number) {
   return await db('bikes').select().where({ id })
 }
 
@@ -23,13 +23,13 @@ export async function updateBike(id: number, data: Bikes) {
   return db('bikes').where({ id }).update(data)
 }
 //GET user by id
-export async function getUserById(id: User) {
-  const user = db('users').select().where({ id }).first()
+export async function getUserById(id: string) {
+  const user = db('users').select().where('authid', id)
   return user
 }
 //PATCH update user
 export async function updateUser(id: string, data: User) {
-  return db('user').where({ id }).update(data)
+  return db('user').where('authid', id).update(data)
 }
 
 //POST add user

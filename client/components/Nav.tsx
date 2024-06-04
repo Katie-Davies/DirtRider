@@ -1,7 +1,13 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Login from './Login'
+import { useState } from 'react'
 
-function Nav() {
+function Nav(this: any) {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen)
+  }
   return (
     <>
       <div className="nav-layout">
@@ -12,55 +18,65 @@ function Nav() {
             className="logo"
           ></img>
         </Link>
+        {/* <Login /> */}
+
         <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn m-1 hover:bg-customBlue"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              className="inline-block w-5 h-5 stroke-current"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              ></path>
-            </svg>
+          <div onClick={toggleDropdown}>
+            <button className="btn m-1 hover:bg-customBlue bg-transparent border-transparent hover:border-transparent">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                className="inline-block w-8 h-8 stroke-current bg-transparent"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                ></path>
+              </svg>
+            </button>
           </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link
-                to="/"
-                className=" hover:bg-customBlue  focus:bg-customBlue"
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="profile"
-                className=" hover:bg-customBlue focus:bg-customBlue"
-              >
-                Profile
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="bikes"
-                className=" hover:bg-customBlue  focus:bg-customBlue"
-              >
-                View Bikes
-              </Link>
-            </li>
-          </ul>
+          {isDropdownOpen && (
+            <ul
+              tabIndex={0}
+              className="dropdown-content z-[1] menu p-2 shadow bg-customBlueBlue rounded-box w-52"
+            >
+              <li>
+                <Link
+                  to="/"
+                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="profile"
+                  className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                >
+                  Profile
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="bikes"
+                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                >
+                  View Bikes
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="bikes"
+                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                >
+                  Log out
+                </Link>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </>
