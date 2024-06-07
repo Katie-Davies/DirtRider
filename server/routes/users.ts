@@ -27,4 +27,16 @@ router.post('/', async (req, res) => {
   }
 })
 
+router.put('/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const user = req.body
+    await db.updateUser(id, user)
+    res.json({ message: 'User updated successfully' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Something went wrong' })
+  }
+})
+
 export default router

@@ -1,11 +1,14 @@
 export interface User {
-  id: number
   first_name: string
   last_name: string
   email: string
   phone?: number
   authid: string
   host: boolean
+}
+
+export interface UserId extends User {
+  id: number
 }
 
 export interface Bikes {
