@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import Login from './Login'
 import { useState } from 'react'
+import Logout from './Logout'
 
 function Nav(this: any) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -74,6 +75,7 @@ function Nav(this: any) {
                 >
                   Log out
                 </Link>
+                <Logout />
               </li>
             </ul>
           )}
