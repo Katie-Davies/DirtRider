@@ -1,5 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import useGetUserByID from '../hooks/useGetUserByID'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect } from 'react'
+import { addUser } from '../apis/apiClient'
 
 // const fakeData = {
 //   id: 1,
@@ -12,18 +15,31 @@ import useGetUserByID from '../hooks/useGetUserByID'
 
 function Profile() {
   //need to get auth working to grab real data authid
-  const { data: user, isLoading, isError } = useGetUserByID('janesmith456')
   const navigate = useNavigate()
-  if (isLoading) {
-    return (
-      <>
-        <span className="loading loading-spinner loading-md"></span>
-      </>
-    )
-  }
-  if (isError) {
-    return <p>There has been a error please try again.</p>
-  }
+  const { user } = useAuth0()
+  const auth = user?.sub
+
+  const { data: currentUser, isError, isLoading } = useGetUserByID(auth)
+
+  useEffect(() => {
+    if (!currentUser && !isLoading && !isError) {
+      const newUser = {
+        first_name: user?.given_name,
+        last_name: user?.family_name,
+        email: user?.email,
+        phone: user?.phone_number,
+        authid: user?.sub,
+        host: false,
+      }
+      addUser(newUser)
+    }
+    if (isLoading) {
+      console.log('Loading user')
+    }
+    if (isError) {
+      console.log('Error finding user')
+    }
+  }, [currentUser, isError, isLoading, user])
 
   const handleClick = () => {
     navigate(`/profile/edit/${user?.id}`)
