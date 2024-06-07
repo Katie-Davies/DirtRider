@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import useGetUserByID from '../hooks/useGetUserByID'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useUpdateUser from '../hooks/useUpdateUser'
 import { User } from '../../models/models'
 
 function EditProfile() {
   const { id } = useParams()
   const updateUser = useUpdateUser()
+  const navigate = useNavigate()
   const { data: user, isError, isLoading } = useGetUserByID(id)
 
   const [userDetails, setUserDetails] = useState({
@@ -55,6 +56,7 @@ function EditProfile() {
     updateUser.mutate(postData)
 
     console.log('Form submitted')
+    navigate(`/profile`)
   }
 
   return (

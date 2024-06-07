@@ -5,15 +5,6 @@ import { useEffect } from 'react'
 import { addUser } from '../apis/apiClient'
 import { User } from '../../models/models'
 
-// const fakeData = {
-//   id: 1,
-//   userName: 'JohnnyDoe123',
-//   name: 'John Doe',
-//   email: 'johnDoe123@mail.com',
-//   age: 25,
-//   location: 'Taupo',
-// }
-
 function Profile() {
   //need to get auth working to grab real data authid
   const navigate = useNavigate()
@@ -44,21 +35,24 @@ function Profile() {
   const handleClick = () => {
     navigate(`/profile/edit/${auth}`)
   }
+  const handleAddBike = () => {
+    navigate(`/bikes/add`)
+  }
+
   if (user) {
     return (
       <div>
         <h1>Your Profile</h1>
         <div>
           <p>
-            Name: {currentUser?.first_name}
-            {currentUser?.last_name}
+            Name: {currentUser?.first_name} {currentUser?.last_name}
           </p>
           <p>Email: {currentUser?.email}</p>
           <p>Phone: {currentUser?.phone}</p>
 
-          {currentUser?.host ? <button> Add Bike</button> : null}
-
-          <p>Host: {currentUser?.host}</p>
+          {currentUser?.host ? (
+            <button onClick={handleAddBike}> Add Bike</button>
+          ) : null}
         </div>
         <div>
           <button
