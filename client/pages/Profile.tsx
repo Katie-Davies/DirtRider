@@ -50,11 +50,15 @@ function Profile() {
         <h1>Your Profile</h1>
         <div>
           <p>
-            Name: {user.first_name}
-            {user.last_name}
+            Name: {currentUser?.first_name}
+            {currentUser?.last_name}
           </p>
-          <p>Email: {user.email}</p>
-          <p>Phone: {user.phone}</p>
+          <p>Email: {currentUser?.email}</p>
+          <p>Phone: {currentUser?.phone}</p>
+
+          {currentUser?.host ? <button> Add Bike</button> : null}
+
+          <p>Host: {currentUser?.host}</p>
         </div>
         <div>
           <button

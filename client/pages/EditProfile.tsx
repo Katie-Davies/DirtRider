@@ -41,9 +41,10 @@ function EditProfile() {
   }
 
   function handleChanges(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, type, value, checked } = e.target
     setUserDetails({
       ...userDetails,
-      [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : value,
     })
   }
   console.log(userDetails)
