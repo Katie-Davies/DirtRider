@@ -3,6 +3,7 @@ import useGetUserByID from '../hooks/useGetUserByID'
 import { useAuth0 } from '@auth0/auth0-react'
 import { useEffect } from 'react'
 import { addUser } from '../apis/apiClient'
+import { User } from '../../models/models'
 
 // const fakeData = {
 //   id: 1,
@@ -22,7 +23,11 @@ function Profile() {
   const { data: currentUser, isError, isLoading } = useGetUserByID(auth)
 
   useEffect(() => {
-    if (!currentUser && !isLoading && !isError) {
+    if (isLoading) {
+      console.log('Loading user')
+    }
+    if (isError) {
+      console.log('Error finding user')
       const newUser = {
         first_name: user?.given_name,
         last_name: user?.family_name,
@@ -30,19 +35,14 @@ function Profile() {
         phone: user?.phone_number,
         authid: user?.sub,
         host: false,
-      }
+      } as User
       addUser(newUser)
-    }
-    if (isLoading) {
-      console.log('Loading user')
-    }
-    if (isError) {
-      console.log('Error finding user')
+      console.log('User added')
     }
   }, [currentUser, isError, isLoading, user])
 
   const handleClick = () => {
-    navigate(`/profile/edit/${user?.id}`)
+    navigate(`/profile/edit/${auth}`)
   }
   if (user) {
     return (

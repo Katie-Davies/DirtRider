@@ -17,3 +17,11 @@ export async function addUser(user: User) {
   const newUser = await request.post(`${rootUrl}/users`).send(user)
   return newUser.body as UserId
 }
+
+export async function updateUser(user: User) {
+  console.log(user)
+  const updatedUser = await request
+    .put(`${rootUrl}/users/${user.authid}`)
+    .send(user)
+  return updatedUser.body as UserId
+}
