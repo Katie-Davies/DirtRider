@@ -18,7 +18,7 @@ function Nav(this: any) {
             className="logo"
           ></img>
         </Link>
-        {/* <Login /> */}
+        <Login />
 
         <div className="dropdown dropdown-end">
           <div onClick={toggleDropdown}>
