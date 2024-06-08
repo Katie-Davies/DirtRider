@@ -1,4 +1,4 @@
-import { Bikes, User } from '../../models/models'
+import { Bikes, User, UserId } from '../../models/models'
 import connection from './connection'
 
 const db = connection
@@ -28,11 +28,11 @@ export async function getUserById(id: string) {
   return user
 }
 //PATCH update user
-export async function updateUser(id: string, data: User) {
-  return db('user').where('authid', id).update(data)
+export async function updateUser(id: string, data: UserId) {
+  return db('users').where('authid', id).update(data)
 }
 
 //POST add user
 export async function addUser(data: User) {
-  return db('user').insert(data)
+  return db('users').insert(data)
 }

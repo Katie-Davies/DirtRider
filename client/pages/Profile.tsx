@@ -1,44 +1,58 @@
 import { useNavigate } from 'react-router-dom'
 import useGetUserByID from '../hooks/useGetUserByID'
-
-// const fakeData = {
-//   id: 1,
-//   userName: 'JohnnyDoe123',
-//   name: 'John Doe',
-//   email: 'johnDoe123@mail.com',
-//   age: 25,
-//   location: 'Taupo',
-// }
+import { useAuth0 } from '@auth0/auth0-react'
+import { useEffect } from 'react'
+import { addUser } from '../apis/apiClient'
+import { User } from '../../models/models'
 
 function Profile() {
   //need to get auth working to grab real data authid
-  const { data: user, isLoading, isError } = useGetUserByID('janesmith456')
   const navigate = useNavigate()
-  if (isLoading) {
-    return (
-      <>
-        <span className="loading loading-spinner loading-md"></span>
-      </>
-    )
-  }
-  if (isError) {
-    return <p>There has been a error please try again.</p>
-  }
+  const { user } = useAuth0()
+  const auth = user?.sub
+
+  const { data: currentUser, isError, isLoading } = useGetUserByID(auth)
+
+  useEffect(() => {
+    if (isLoading) {
+      console.log('Loading user')
+    }
+    if (isError) {
+      console.log('Error finding user')
+      const newUser = {
+        first_name: user?.given_name,
+        last_name: user?.family_name,
+        email: user?.email,
+        phone: user?.phone_number,
+        authid: user?.sub,
+        host: false,
+      } as User
+      addUser(newUser)
+      console.log('User added')
+    }
+  }, [currentUser, isError, isLoading, user])
 
   const handleClick = () => {
-    navigate(`/profile/edit/${user?.id}`)
+    navigate(`/profile/edit/${auth}`)
   }
+  const handleAddBike = () => {
+    navigate(`/bikes/add`)
+  }
+
   if (user) {
     return (
       <div>
         <h1>Your Profile</h1>
         <div>
           <p>
-            Name: {user.first_name}
-            {user.last_name}
+            Name: {currentUser?.first_name} {currentUser?.last_name}
           </p>
-          <p>Email: {user.email}</p>
-          <p>Phone: {user.phone}</p>
+          <p>Email: {currentUser?.email}</p>
+          <p>Phone: {currentUser?.phone}</p>
+
+          {currentUser?.host ? (
+            <button onClick={handleAddBike}> Add Bike</button>
+          ) : null}
         </div>
         <div>
           <button

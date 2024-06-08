@@ -11,8 +11,8 @@ const queryClient = new QueryClient()
 document.addEventListener('DOMContentLoaded', () => {
   createRoot(document.getElementById('app') as HTMLElement).render(
     <Auth0Provider
-      domain="mealeasy-2024.au.auth0.com"
-      clientId="doliuGIKF1MKZOopd0UNHk1GbgY5ZVSc"
+      domain="katie-d-projects.au.auth0.com"
+      clientId="ThtsgHu30LnLYOTlixottB2wOArwN19T"
       authorizationParams={{
         redirect_uri: window.location.origin,
         audience: 'https://dirtrider/api',
