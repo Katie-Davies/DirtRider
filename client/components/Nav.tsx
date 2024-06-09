@@ -56,6 +56,14 @@ function Nav(this: any) {
                 </Link>
               </li>
 
+              <li>
+                <Link
+                  to="bikes"
+                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                >
+                  View Bikes
+                </Link>
+              </li>
               {currentUser ? (
                 <>
                   <li>
@@ -74,19 +82,11 @@ function Nav(this: any) {
                       My Bookings
                     </Link>
                   </li>
+                  <li>
+                    <Logout />
+                  </li>
                 </>
               ) : null}
-              <li>
-                <Link
-                  to="bikes"
-                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
-                >
-                  View Bikes
-                </Link>
-              </li>
-              <li>
-                <Logout />
-              </li>
             </ul>
           )}
         </div>
