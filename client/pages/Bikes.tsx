@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import useGetAllBikes from '../hooks/useGetAllBikes'
 
 function Bikes() {
+  const navigate = useNavigate()
   const { data: bikes, isLoading, isError } = useGetAllBikes()
 
   if (isLoading) {
@@ -43,7 +45,12 @@ function Bikes() {
                     </ul>
 
                     <div className="card-actions justify-end">
-                      <button className="btn btn-sm ">Rent Now</button>
+                      <button
+                        className="btn btn-sm "
+                        onClick={() => navigate(`${bike.id}/booking`)}
+                      >
+                        Rent Now
+                      </button>
                     </div>
                   </div>
                 </div>

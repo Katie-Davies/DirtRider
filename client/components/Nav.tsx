@@ -5,10 +5,11 @@ import Logout from './Logout'
 import { useAuth0 } from '@auth0/auth0-react'
 import useGetUserByID from '../hooks/useGetUserByID'
 
-function Nav(this: any) {
+function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const { user } = useAuth0()
-  const { data: currentUser, isError, isLoading } = useGetUserByID(user?.sub)
+  const userID = user?.sub
+
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
@@ -64,7 +65,7 @@ function Nav(this: any) {
                   View Bikes
                 </Link>
               </li>
-              {currentUser ? (
+              {userID ? (
                 <>
                   <li>
                     <Link
