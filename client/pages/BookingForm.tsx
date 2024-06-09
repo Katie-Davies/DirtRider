@@ -26,25 +26,40 @@ function BookingForm() {
     return (
       <>
         <h1>Booking Form</h1>
-        <form>
-          <label></label>
-          <DatePicker
-            placeholderText="start"
-            onChange={(date) => {
-              const [start, end] = date
-              setStartDate(start)
-              setEndDate(end)
-            }} // Fix: Provide a default value for the date parameter
-            startDate={startDate}
-            endDate={endDate}
-            dateFormat="dd-MM-yyyy"
-            selectsRange={true}
-            isClearable={true}
-          />
-        </form>
+        <div className="flex flex-wrap">
+          <div className="w-64">
+            <h2>{bike.make}</h2>
+            <ul>
+              <li>
+                <strong>Model:</strong> {bike.model}
+              </li>
+              <li>Engine size: {bike.engine_size}</li>
+              <li>Location: {bike.location}</li>
+              <li>Price per day: $ {bike.price}</li>
+            </ul>
+          </div>
+          <div>
+            <h2>Select your dates</h2>
+            <DatePicker
+              placeholderText="start"
+              onChange={(date) => {
+                const [start, end] = date
+                setStartDate(start)
+                setEndDate(end)
+              }} // Fix: Provide a default value for the date parameter
+              startDate={startDate}
+              endDate={endDate}
+              dateFormat="dd-MM-yyyy"
+              selectsRange={true}
+              isClearable={true}
+            />
+            <p>You have selected dates:</p>
+            <p>{formatDate(startDate)}</p>
+            <p>{formatDate(endDate)}</p>
 
-        <p>{formatDate(startDate)}</p>
-        <p>{formatDate(endDate)}</p>
+            <button className="border-">Confirm booking</button>
+          </div>
+        </div>
       </>
     )
   }
