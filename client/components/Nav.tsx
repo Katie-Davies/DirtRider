@@ -71,12 +71,6 @@ function Nav(this: any) {
                 </Link>
               </li>
               <li>
-                <Link
-                  to="bikes"
-                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
-                >
-                  Log out
-                </Link>
                 <Logout />
               </li>
             </ul>
