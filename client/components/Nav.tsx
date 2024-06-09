@@ -2,9 +2,11 @@ import { Link } from 'react-router-dom'
 import Login from './Login'
 import { useState } from 'react'
 import Logout from './Logout'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Nav(this: any) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+  const { user } = useAuth0()
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
@@ -19,7 +21,7 @@ function Nav(this: any) {
             className="logo"
           ></img>
         </Link>
-        <Login />
+        {!user ? <Login /> : null}
 
         <div className="dropdown dropdown-end">
           <div onClick={toggleDropdown}>
