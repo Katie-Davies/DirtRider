@@ -32,6 +32,7 @@
     "express": "^4.17.2",
     "knex": "^2.5.1",
     "react-bootstrap": "^2.10.2",
+    "react-datepicker": "^6.9.0",
     "sqlite3": "^5.1.6",
     "superagent": "^8.1.2"
   },
