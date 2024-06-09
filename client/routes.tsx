@@ -16,6 +16,7 @@ export default createRoutesFromElements(
       <Route path="bikes/:id/booking" element={<Booking />} />
       <Route path="profile" element={<Profile />} />
       <Route path="profile/edit/:id" element={<EditProfile />} />
+      <Route path="bookings/:id" element={<Booking />} />
     </Route>
   </>,
 )

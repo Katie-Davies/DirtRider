@@ -3,11 +3,12 @@ import Login from './Login'
 import { useState } from 'react'
 import Logout from './Logout'
 import { useAuth0 } from '@auth0/auth0-react'
+import useGetUserByID from '../hooks/useGetUserByID'
 
 function Nav(this: any) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const { user } = useAuth0()
-
+  const { data: currentUser, isError, isLoading } = useGetUserByID(user?.sub)
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen)
   }
@@ -54,14 +55,27 @@ function Nav(this: any) {
                   Home
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="profile"
-                  className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
-                >
-                  Profile
-                </Link>
-              </li>
+
+              {currentUser ? (
+                <>
+                  <li>
+                    <Link
+                      to="profile"
+                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                    >
+                      Profile
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="bookings/{currentUser.authid}"
+                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                    >
+                      My Bookings
+                    </Link>
+                  </li>
+                </>
+              ) : null}
               <li>
                 <Link
                   to="bikes"
