@@ -3,11 +3,18 @@ import { Bikes, User, UserId } from '../../models/models'
 
 const rootUrl = '/api/v1'
 
+//bikes
 export async function getAllBikes() {
   const bikes = await request.get(`${rootUrl}/bikes`)
   return bikes.body as Bikes[]
 }
 
+export async function getBikeById(id: string) {
+  const bike = await request.get(`${rootUrl}/bikes/${id}`)
+  return bike.body[0] as Bikes
+}
+
+//users
 export async function getUserById(id: string) {
   const user = await request.get(`${rootUrl}/users/${id}`)
   return user.body[0] as UserId
