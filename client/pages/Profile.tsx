@@ -39,7 +39,7 @@ function Profile() {
     navigate(`/bikes/add`)
   }
 
-  if (user) {
+  if (currentUser) {
     return (
       <div>
         <h1>Your Profile</h1>
