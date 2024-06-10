@@ -57,7 +57,7 @@ function BookingForm() {
             <p>{formatDate(startDate)}</p>
             <p>{formatDate(endDate)}</p>
 
-            <button className="border-">Confirm booking</button>
+            <button>Confirm booking</button>
           </div>
         </div>
       </>

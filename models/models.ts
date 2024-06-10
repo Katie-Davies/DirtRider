@@ -21,3 +21,11 @@ export interface Bikes {
   price: number
   image: string
 }
+
+export interface Booking {
+  id: number
+  bike_id: number
+  user_id: string
+  start_date: string
+  end_date: string
+}

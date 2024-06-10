@@ -1,4 +1,4 @@
-import { Bikes, User, UserId } from '../../models/models'
+import { Bikes, Booking, User, UserId } from '../../models/models'
 import connection from './connection'
 
 const db = connection
@@ -20,25 +20,40 @@ export async function addBike(data: Bikes) {
 
 //PATCH update bike
 export async function updateBike(id: number, data: Bikes) {
-  return db('bikes').where({ id }).update(data)
+  return await db('bikes').where({ id }).update(data)
 }
 
 //delete bike
 export async function deleteBike(id: number) {
-  return db('bikes').where({ id }).del()
+  return await db('bikes').where({ id }).del()
 }
 
 //GET user by id
 export async function getUserById(id: string) {
-  const user = db('users').select().where('authid', id)
+  const user = await db('users').select().where('authid', id)
   return user
 }
 //PATCH update user
 export async function updateUser(id: string, data: UserId) {
-  return db('users').where('authid', id).update(data)
+  return await db('users').where('authid', id).update(data)
 }
 
 //POST add user
 export async function addUser(data: User) {
-  return db('users').insert(data)
+  return await db('users').insert(data)
+}
+
+//Post Booking
+export async function addBooking(data: Booking) {
+  return await db('bookings').insert(data)
+}
+
+//get renters booking
+export async function getRentersBookings(id: string) {
+  return await db('bookings').where('user_id', id)
+}
+
+//get hosts bookings
+export async function getHostsBookings(id: string) {
+  return await db('bookings').where('host_id', id)
 }
