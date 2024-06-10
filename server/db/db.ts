@@ -22,6 +22,12 @@ export async function addBike(data: Bikes) {
 export async function updateBike(id: number, data: Bikes) {
   return db('bikes').where({ id }).update(data)
 }
+
+//delete bike
+export async function deleteBike(id: number) {
+  return db('bikes').where({ id }).del()
+}
+
 //GET user by id
 export async function getUserById(id: string) {
   const user = db('users').select().where('authid', id)
