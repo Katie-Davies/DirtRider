@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
 import { format } from 'date-fns'
 import { useAuth0 } from '@auth0/auth0-react'
-import { Booking } from '../models/models'
+import { Booking } from '../../models/models'
 
 function BookingForm() {
   const { user } = useAuth0()
@@ -24,7 +24,7 @@ function BookingForm() {
     console.log('Booking data:', bookingData)
   }
 
-  const formatDate = (date) => (date ? format(date, 'dd-MM-yyyy') : '')
+  const formatDate = (date: Date) => (date ? format(date, 'dd-MM-yyyy') : '')
 
   if (isLoading) {
     console.log('Loading bike')
