@@ -57,3 +57,13 @@ export async function getRentersBookings(id: string) {
 export async function getHostsBookings(id: string) {
   return await db('bookings').where('host_id', id)
 }
+
+//delete a booking
+export async function deleteBooking(id: number) {
+  return await db('bookings').delete().where({ id })
+}
+
+// update bookikng
+export async function updateBooking(id: number, data: Booking) {
+  return await db('bookings').where({ id }).update(data)
+}
