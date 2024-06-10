@@ -4,12 +4,25 @@ import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 import { useState } from 'react'
 import { format } from 'date-fns'
+import { useAuth0 } from '@auth0/auth0-react'
+import { Booking } from '../models/models'
 
 function BookingForm() {
+  const { user } = useAuth0()
   const { id } = useParams()
   const { data: bike, isLoading, isError } = useGetBikeByID(id ?? '')
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
+
+  const handleSubmit = () => {
+    const bookingData = {
+      bike_id: bike?.id,
+      user_id: user?.sub,
+      start_date: format(startDate ?? '', 'yyyy-MM-dd'),
+      end_date: format(endDate ?? '', 'yyyy-MM-dd'),
+    } as Booking
+    console.log('Booking data:', bookingData)
+  }
 
   const formatDate = (date) => (date ? format(date, 'dd-MM-yyyy') : '')
 
@@ -57,7 +70,7 @@ function BookingForm() {
             <p>{formatDate(startDate)}</p>
             <p>{formatDate(endDate)}</p>
 
-            <button>Confirm booking</button>
+            <button onClick={handleSubmit}>Confirm booking</button>
           </div>
         </div>
       </>
