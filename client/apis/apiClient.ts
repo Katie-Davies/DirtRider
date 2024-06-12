@@ -14,6 +14,14 @@ export async function getBikeById(id: string) {
   return bike.body[0] as Bikes
 }
 
+export async function addBike(bike: Bikes, token: string) {
+  const newBike = await request
+    .post(`${rootUrl}/bikes`)
+    .set('Authorization', `Bearer ${token}`)
+    .send(bike)
+  return newBike.body as Bikes
+}
+
 //users
 export async function getUserById(id: string) {
   const user = await request.get(`${rootUrl}/users/${id}`)
