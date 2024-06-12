@@ -12,7 +12,7 @@ router.get('/renter/:id', async (req, res) => {
     res.status(200).json(bookings)
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Error retureving bookings' })
+    res.status(500).json({ message: 'Error retrieving bookings' })
   }
 })
 
@@ -24,6 +24,45 @@ router.get('/host/:id', async (req, res) => {
     res.status(200).json(bookings)
   } catch (error) {
     console.log(error)
-    res.status(500).json({ message: 'Error retureving bookings' })
+    res.status(500).json({ message: 'Error retrieving bookings' })
   }
 })
+
+// create booking
+router.post('/', async (req, res) => {
+  try {
+    const data = req.body
+    const booked = await db.addBooking(data)
+    res.status(200).json(booked)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error creating booking' })
+  }
+})
+
+// update booking
+router.patch('/:id', async (req, res) => {
+  try {
+    const id = Number(req.params.id)
+    const data = req.body
+    const updated = await db.updateBooking(id, data)
+    res.status(200).json(updated)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error updating your booking' })
+  }
+})
+
+// delete booking
+router.delete('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    await db.deleteBooking(id)
+    res.status(200).json({ message: 'Booking deleted' })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error deleting booking' })
+  }
+})
+
+export default router

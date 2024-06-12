@@ -9,7 +9,7 @@ export async function seed(knex) {
     {
       id: 1,
       bike_id: 1,
-      user_id: 'johndoe123',
+      user_id: 'michaeljohnson789',
       start_date: '2024-06-09',
       end_date: '2024-06-10',
     },

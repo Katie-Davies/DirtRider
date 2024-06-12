@@ -50,12 +50,16 @@ export async function addBooking(data: Booking) {
 
 //get renters booking
 export async function getRentersBookings(id: string) {
-  return await db('bookings').where('user_id', id)
+  return await db('bookings')
+    .join('bikes', 'bikes.id', 'bookings.bike_id')
+    .where('bookings.user_id', id)
 }
 
 //get hosts bookings
 export async function getHostsBookings(id: string) {
-  return await db('bookings').where('host_id', id)
+  return await db('bookings')
+    .join('bikes', 'bikes.id', 'bookings.bike_id')
+    .where('bikes.user_authid', id)
 }
 
 //delete a booking
