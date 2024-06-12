@@ -1,6 +1,10 @@
 import { Router } from 'express'
+import checkJwt, {JwtRequest }from '../auth0'
 
 import * as db from '../db/db'
+import { User } from '@auth0/auth0-react'
+import { UserId } from '../../models/models'
+
 
 const router = Router()
 
@@ -26,6 +30,15 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: 'something went wrong' })
   }
 })
+
+//add a bike
+router.post('/', checkJwt, async (req: JwtRequest,res) => {
+  const data = req.body
+  const user = 
+
+})
+
+
 
 //update bike
 router.patch('/:id', async (req, res) => {
