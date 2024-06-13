@@ -50,17 +50,17 @@ function BookingForm() {
     return selectedDates.length
   }
 
-  const handleCost = () => {
-    const price = Number(bike?.price)
-    const days = dayCounter()
-    console.log(price, days)
-    setPrice(price * days)
-  }
   useEffect(() => {
+    const handleCost = () => {
+      const price = Number(bike?.price)
+      const days = dayCounter()
+      console.log(price, days)
+      setPrice(price * days)
+    }
     if (selectedDates.length > 0) {
       handleCost()
     }
-  }, [selectedDates])
+  }, [bike?.price, dayCounter, selectedDates])
 
   if (isLoading) {
     console.log('Loading bike')
