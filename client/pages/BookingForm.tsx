@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useGetBikeByID from '../hooks/useGetBikeById'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { format } from 'date-fns'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Booking } from '../../models/models'
+import useAddBooking from '../hooks/useAddBooking'
 
 function BookingForm() {
   const { user } = useAuth0()
@@ -13,6 +14,10 @@ function BookingForm() {
   const { data: bike, isLoading, isError } = useGetBikeByID(id ?? '')
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
+  const [confirmed, setConfirmed] = useState(false)
+
+  const addBooking = useAddBooking()
+  const navigate = useNavigate()
 
   const handleSubmit = () => {
     const bookingData = {
@@ -22,6 +27,8 @@ function BookingForm() {
       end_date: format(endDate ?? '', 'yyyy-MM-dd'),
     } as Booking
     console.log('Booking data:', bookingData)
+    addBooking.mutate(bookingData)
+    setConfirmed(true)
   }
 
   const formatDate = (date: Date) => (date ? format(date, 'dd-MM-yyyy') : '')
@@ -51,27 +58,38 @@ function BookingForm() {
               <li>Price per day: $ {bike.price}</li>
             </ul>
           </div>
-          <div>
-            <h2>Select your dates</h2>
-            <DatePicker
-              placeholderText="start"
-              onChange={(date) => {
-                const [start, end] = date
-                setStartDate(start)
-                setEndDate(end)
-              }} // Fix: Provide a default value for the date parameter
-              startDate={startDate}
-              endDate={endDate}
-              dateFormat="dd-MM-yyyy"
-              selectsRange={true}
-              isClearable={true}
-            />
-            <p>You have selected dates:</p>
-            <p>{formatDate(startDate)}</p>
-            <p>{formatDate(endDate)}</p>
 
-            <button onClick={handleSubmit}>Confirm booking</button>
-          </div>
+          {!confirmed ? (
+            <div>
+              <h2>Select your dates</h2>
+              <DatePicker
+                placeholderText="start"
+                onChange={(date) => {
+                  const [start, end] = date
+                  setStartDate(start)
+                  setEndDate(end)
+                }} // Fix: Provide a default value for the date parameter
+                startDate={startDate}
+                endDate={endDate}
+                dateFormat="dd-MM-yyyy"
+                selectsRange={true}
+                isClearable={true}
+              />
+              <p>You have selected dates:</p>
+              <p>{formatDate(startDate)}</p>
+              <p>{formatDate(endDate)}</p>
+
+              <button onClick={handleSubmit}>Confirm booking</button>
+            </div>
+          ) : (
+            <div>
+              <h3>Your Booking has been confirmed</h3>
+              <button onClick={() => navigate(`/bookings/${user?.sub}`)}>
+                {' '}
+                View your bookings here
+              </button>
+            </div>
+          )}
         </div>
       </>
     )
