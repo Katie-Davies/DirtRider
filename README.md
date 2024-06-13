@@ -3,7 +3,7 @@
 An in development personal project that fills the gap in the market for hiring dirt bikes from individual people. 
 
 ## In Progress 
-I am currently learning how to implement this with Azure AD and SQL so I am able to deploy on Azure cloud. Keep checking in to see the progress! 
+I am currently learning how to implement Stripe and Socket.io. Keep checking in to see the progress! 
 
 
 ### User Story as Customer 
