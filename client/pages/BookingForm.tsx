@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useGetBikeByID from '../hooks/useGetBikeById'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Booking } from '../../models/models'
@@ -15,9 +15,22 @@ function BookingForm() {
   const [startDate, setStartDate] = useState(null)
   const [endDate, setEndDate] = useState(null)
   const [confirmed, setConfirmed] = useState(false)
+  const [selectedDates, setSelectedDates] = useState([])
+  const [price, setPrice] = useState(0)
 
   const addBooking = useAddBooking()
   const navigate = useNavigate()
+
+  const handleDateChange = (date) => {
+    const [start, end] = date
+    setStartDate(start)
+    setEndDate(end)
+    const dateArray = []
+    for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+      dateArray.push(new Date(d))
+    }
+    setSelectedDates(dateArray)
+  }
 
   const handleSubmit = () => {
     const bookingData = {
@@ -32,6 +45,22 @@ function BookingForm() {
   }
 
   const formatDate = (date: Date) => (date ? format(date, 'dd-MM-yyyy') : '')
+
+  const dayCounter = () => {
+    return selectedDates.length
+  }
+
+  const handleCost = () => {
+    const price = Number(bike?.price)
+    const days = dayCounter()
+    console.log(price, days)
+    setPrice(price * days)
+  }
+  useEffect(() => {
+    if (selectedDates.length > 0) {
+      handleCost()
+    }
+  }, [selectedDates])
 
   if (isLoading) {
     console.log('Loading bike')
@@ -64,28 +93,24 @@ function BookingForm() {
               <h2>Select your dates</h2>
               <DatePicker
                 placeholderText="start"
-                onChange={(date) => {
-                  const [start, end] = date
-                  setStartDate(start)
-                  setEndDate(end)
-                }} // Fix: Provide a default value for the date parameter
+                onChange={handleDateChange} // Fix: Provide a default value for the date parameter
                 startDate={startDate}
                 endDate={endDate}
                 dateFormat="dd-MM-yyyy"
                 selectsRange={true}
                 isClearable={true}
+                minDate={new Date()} //this stops user picking a date before today
               />
               <p>You have selected dates:</p>
               <p>{formatDate(startDate)}</p>
               <p>{formatDate(endDate)}</p>
-
+              <p>${price}</p>
               <button onClick={handleSubmit}>Confirm booking</button>
             </div>
           ) : (
             <div>
               <h3>Your Booking has been confirmed</h3>
               <button onClick={() => navigate(`/bookings/${user?.sub}`)}>
-                {' '}
                 View your bookings here
               </button>
             </div>
