@@ -1,10 +1,7 @@
 import { Router } from 'express'
-import checkJwt, {JwtRequest }from '../auth0'
+import checkJwt, { JwtRequest } from '../auth0'
 
 import * as db from '../db/db'
-import { User } from '@auth0/auth0-react'
-import { UserId } from '../../models/models'
-
 
 const router = Router()
 
@@ -32,13 +29,24 @@ router.get('/:id', async (req, res) => {
 })
 
 //add a bike
-router.post('/', checkJwt, async (req: JwtRequest,res) => {
+router.post('/', checkJwt, async (req: JwtRequest, res) => {
   const data = req.body
-  const user = 
+  const user = req.auth?.sub
 
+  if (!user) {
+    res.status(401).json({ message: 'Unauthorised' })
+  }
+  try {
+    const userExists = await db.getUserById(user ?? '')
+    if (userExists[0].host) {
+      await db.addBike(data)
+      res.status(201).send('Bike added')
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'An error occurred, bike was not added' })
+  }
 })
-
-
 
 //update bike
 router.patch('/:id', async (req, res) => {
@@ -46,7 +54,7 @@ router.patch('/:id', async (req, res) => {
   const data = req.body
   try {
     const updateBike = await db.updateBike(id, data)
-    res.status(200).json({ message: 'Bike updated' })
+    res.status(200).json(updateBike)
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'An error occurred, bike was not updated' })
@@ -57,7 +65,7 @@ router.patch('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
-    const deleteBike = await db.deleteBike(id)
+    await db.deleteBike(id)
     res.status(200).json({ message: 'Bike deleted' })
   } catch (error) {
     console.log(error)
