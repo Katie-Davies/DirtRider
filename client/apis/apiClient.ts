@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Bikes, User, UserId } from '../../models/models'
+import { Bikes, Booking, User, UserId } from '../../models/models'
 
 const rootUrl = '/api/v1'
 
@@ -22,6 +22,10 @@ export async function addBike(bike: Bikes, token: string) {
   return newBike.body as Bikes
 }
 
+//update bike
+
+//delete bike
+
 //users
 export async function getUserById(id: string) {
   const user = await request.get(`${rootUrl}/users/${id}`)
@@ -39,4 +43,14 @@ export async function updateUser(user: User) {
     .put(`${rootUrl}/users/${user.authid}`)
     .send(user)
   return updatedUser.body as UserId
+}
+
+//Booking
+export async function addBooking(booking: Booking) {
+  const addBooking = await request.post(`${rootUrl}/bookings`).send(booking)
+  return addBooking.body as Booking
+}
+
+export async function deleteBooking(id: number) {
+  return await request.del(`${rootUrl}/bookings/${id}`)
 }
