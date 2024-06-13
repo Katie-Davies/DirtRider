@@ -1,5 +1,5 @@
 import request from 'superagent'
-import { Bikes, Booking, User, UserId } from '../../models/models'
+import { BikeId, Bikes, Booking, User, UserId } from '../../models/models'
 
 const rootUrl = '/api/v1'
 
@@ -11,7 +11,7 @@ export async function getAllBikes() {
 
 export async function getBikeById(id: string) {
   const bike = await request.get(`${rootUrl}/bikes/${id}`)
-  return bike.body[0] as Bikes
+  return bike.body[0] as BikeId
 }
 
 export async function addBike(bike: Bikes, token: string) {
