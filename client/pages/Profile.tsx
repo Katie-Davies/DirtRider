@@ -1,9 +1,12 @@
 import { useNavigate } from 'react-router-dom'
 import useGetUserByID from '../hooks/useGetUserByID'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { addUser } from '../apis/apiClient'
 import { User } from '../../models/models'
+
+import Login from '../components/Login'
+import HostBikes from '../components/HostBikes'
 
 function Profile() {
   //need to get auth working to grab real data authid
@@ -62,6 +65,14 @@ function Profile() {
             Edit Profile
           </button>
         </div>
+        {currentUser?.host && auth ? (
+          <HostBikes user={auth} />
+        ) : (
+          <div>
+            <h2>My bikes</h2>
+            <p>No Hosted bikes</p>
+          </div>
+        )}
       </div>
     )
   }
