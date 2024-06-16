@@ -5,6 +5,8 @@ interface Props {
 }
 
 function HostBikes({ user }: Props): JSX.Element {
+  const [] = useGetHostsBikes(user)
+
   return <h1>My Bikes {user} </h1>
 }
 

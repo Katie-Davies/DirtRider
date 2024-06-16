@@ -13,6 +13,11 @@ export async function getBikeById(id: number) {
   return await db('bikes').select().where({ id })
 }
 
+// GET bikes by user_id
+export async function getBikesByUserId(id: string) {
+  return await db('bikes').select().where('user_authid', id)
+}
+
 //POST add bikes
 export async function addBike(data: Bikes) {
   return await db('bikes').insert(data)
@@ -67,7 +72,7 @@ export async function deleteBooking(id: number) {
   return await db('bookings').delete().where({ id })
 }
 
-// update bookikng
+// update booking
 export async function updateBooking(id: number, data: Booking) {
   return await db('bookings').where({ id }).update(data)
 }
