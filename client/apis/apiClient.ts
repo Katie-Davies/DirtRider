@@ -6,7 +6,7 @@ const rootUrl = '/api/v1'
 //bikes
 export async function getAllBikes() {
   const bikes = await request.get(`${rootUrl}/bikes`)
-  return bikes.body as Bikes[]
+  return bikes.body as BikeId[]
 }
 
 export async function getBikeById(id: string) {

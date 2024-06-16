@@ -16,9 +16,6 @@ function Homepage() {
           </div>
           <Link to="/bikes">
             <Button className="opacity-90 mt-10">View Bikes</Button>
-            {/* <button className="btn sm:btn-sm md:btn-md  hover:btn-customBlue text-darkBlue">
-              Bikes
-            </button> */}
           </Link>
         </div>
       </div>

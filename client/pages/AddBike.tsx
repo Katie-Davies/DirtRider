@@ -2,6 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { addBike } from '../apis/apiClient'
 import { useParams } from 'react-router-dom'
+import Button from '../components/Button'
 
 function AddBike() {
   const { getAccessTokenSilently } = useAuth0()
@@ -97,7 +98,7 @@ function AddBike() {
             value={newBike.price}
           ></input>
         </label>
-        <button type="submit">Submit</button>
+        <Button type="submit">Submit</Button>
       </form>
     </div>
   )

@@ -7,6 +7,7 @@ import { format } from 'date-fns'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Booking } from '../../models/models'
 import useAddBooking from '../hooks/useAddBooking'
+import Button from '../components/Button'
 
 function BookingForm() {
   const { user } = useAuth0()
@@ -105,14 +106,14 @@ function BookingForm() {
               <p>{formatDate(startDate)}</p>
               <p>{formatDate(endDate)}</p>
               <p>${price}</p>
-              <button onClick={handleSubmit}>Confirm booking</button>
+              <Button onClick={handleSubmit}>Confirm booking</Button>
             </div>
           ) : (
             <div>
               <h3>Your Booking has been confirmed</h3>
-              <button onClick={() => navigate(`/bookings/${user?.sub}`)}>
+              <Button onClick={() => navigate(`/bookings/${user?.sub}`)}>
                 View your bookings here
-              </button>
+              </Button>
             </div>
           )}
         </div>
