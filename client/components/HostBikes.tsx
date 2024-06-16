@@ -13,6 +13,7 @@ function HostBikes({ user }: Props): JSX.Element {
   if (isError) {
     return <h1>There was an error loading your bikes!</h1>
   }
+
   if (bikes) {
     return (
       <>
@@ -23,9 +24,17 @@ function HostBikes({ user }: Props): JSX.Element {
               <h2>
                 {bike.make} {bike.model}
               </h2>
-              <img src={bike.image} alt={bike.model} />
-              <button>Update Price</button>
-              <button>Delete Bike</button>
+              {bike.image ? (
+                <img src={`public/images/${bike.image}`} alt={bike.model} />
+              ) : null}
+
+              <p>{bike.price}</p>
+              <button className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white">
+                Update Price
+              </button>
+              <button className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white">
+                Delete Bike
+              </button>
             </div>
           )
         })}

@@ -7,8 +7,7 @@ export default function Button(props: {
 }) {
   const { onClick, className = '', children } = props
   const defaultClasses =
-    'btn sm:btn-sm md:btn-md  hover:btn-customBlue text-darkBlue'
-
+    'border-4 border-customBlue rounded-md p-2 bg-customBlue text-white'
   return (
     <button className={`${defaultClasses} ${className}`} onClick={onClick}>
       {children}

@@ -53,7 +53,13 @@ function Profile() {
           <p>Phone: {currentUser?.phone}</p>
 
           {currentUser?.host ? (
-            <button onClick={handleAddBike}> Add Bike</button>
+            <button
+              onClick={handleAddBike}
+              className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+            >
+              {' '}
+              Add Bike
+            </button>
           ) : null}
         </div>
         <div>
