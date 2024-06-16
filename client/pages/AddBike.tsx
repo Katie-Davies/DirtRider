@@ -1,10 +1,12 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { addBike } from '../apis/apiClient'
+import { useParams } from 'react-router-dom'
 
 function AddBike() {
-  const { user, getAccessTokenSilently } = useAuth0()
-  const id = user?.sub
+  const { getAccessTokenSilently } = useAuth0()
+  const user = useParams()
+  const id = user.id
   const [newBike, setNewBike] = useState({
     make: '',
     model: '',
@@ -27,7 +29,7 @@ function AddBike() {
       model: '',
       engine_size: '',
       location: 0,
-      user_authid: user?.sub,
+      user_authid: id,
       price: 0,
       image: '',
     })

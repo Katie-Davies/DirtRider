@@ -14,7 +14,7 @@ export default createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<Homepage />} />
       <Route path="bikes" element={<Bikes />} />
-      <Route path="bikes/add" element={<AddBike />} />
+      <Route path="bikes/add/:id" element={<AddBike />} />
       <Route path="bikes/:id/booking" element={<BookingForm />} />
       <Route path="profile" element={<Profile />} />
       <Route path="profile/edit/:id" element={<EditProfile />} />

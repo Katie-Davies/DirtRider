@@ -38,7 +38,7 @@ function Profile() {
     navigate(`/profile/edit/${auth}`)
   }
   const handleAddBike = () => {
-    navigate(`/bikes/add`)
+    navigate(`/bikes/add/${auth}`)
   }
 
   if (user) {
