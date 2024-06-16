@@ -30,8 +30,11 @@ export async function updateBike(data: BikeId) {
   return updatedBike.body as BikeId
 }
 //delete bike
+export async function deletebBike(id: number) {
+  return await request.del(`${rootUrl}/bikes/${id}`)
+}
 
-//users
+//users---------->>>>
 export async function getUserById(id: string) {
   const user = await request.get(`${rootUrl}/users/${id}`)
   return user.body[0] as UserId
@@ -50,7 +53,7 @@ export async function updateUser(user: User) {
   return updatedUser.body as UserId
 }
 
-//Booking
+//Booking ------>>>>>>>
 export async function addBooking(booking: Booking) {
   const addBooking = await request.post(`${rootUrl}/bookings`).send(booking)
   return addBooking.body as Booking
