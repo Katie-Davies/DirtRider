@@ -1,4 +1,3 @@
-import React from 'react'
 import { useGetHostsBikes } from '../hooks/useGetHostsBikes'
 
 interface Props {
