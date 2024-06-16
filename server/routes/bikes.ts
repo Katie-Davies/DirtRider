@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     res.status(500).json({ message: 'Something went wrong' })
   }
 })
-//get by id
+//get by bike id
 router.get('/:id', async (req, res) => {
   const id = Number(req.params.id)
   try {
@@ -25,6 +25,18 @@ router.get('/:id', async (req, res) => {
   } catch (error) {
     console.log(error)
     res.status(500).json({ message: 'something went wrong' })
+  }
+})
+
+//get by user id
+router.get('/user/:id', async (req, res) => {
+  const id = req.params.id
+  try {
+    const bikes = await db.getBikesByUserId(id)
+    res.json(bikes)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'An Error occured findiing your bikes' })
   }
 })
 

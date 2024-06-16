@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom'
 import Nav from './Nav'
-import Homepage from '../pages/Homepage'
 
 function App() {
   return (

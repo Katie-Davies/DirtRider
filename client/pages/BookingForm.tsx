@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import useGetBikeByID from '../hooks/useGetBikeById'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { format } from 'date-fns'
 import { useAuth0 } from '@auth0/auth0-react'
 import { Booking } from '../../models/models'
@@ -12,19 +12,19 @@ function BookingForm() {
   const { user } = useAuth0()
   const { id } = useParams()
   const { data: bike, isLoading, isError } = useGetBikeByID(id ?? '')
-  const [startDate, setStartDate] = useState(null)
-  const [endDate, setEndDate] = useState(null)
+  const [startDate, setStartDate] = useState(new Date())
+  const [endDate, setEndDate] = useState(new Date())
   const [confirmed, setConfirmed] = useState(false)
-  const [selectedDates, setSelectedDates] = useState([])
+  const [selectedDates, setSelectedDates] = useState<Date[]>([])
   const [price, setPrice] = useState(0)
 
   const addBooking = useAddBooking()
   const navigate = useNavigate()
 
-  const handleDateChange = (date) => {
+  const handleDateChange = (date: Date[]) => {
     const [start, end] = date
-    setStartDate(start)
-    setEndDate(end)
+    setStartDate(start) // Provide a default value for startDate
+    setEndDate(end) // Provide a default value for endDate
     const dateArray = []
     for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
       dateArray.push(new Date(d))
@@ -46,9 +46,9 @@ function BookingForm() {
 
   const formatDate = (date: Date) => (date ? format(date, 'dd-MM-yyyy') : '')
 
-  const dayCounter = () => {
+  const dayCounter = useCallback(() => {
     return selectedDates.length
-  }
+  }, [selectedDates])
 
   useEffect(() => {
     const handleCost = () => {

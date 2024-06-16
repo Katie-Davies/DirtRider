@@ -5,6 +5,8 @@ import { useEffect } from 'react'
 import { addUser } from '../apis/apiClient'
 import { User } from '../../models/models'
 
+import HostBikes from '../components/HostBikes'
+
 function Profile() {
   //need to get auth working to grab real data authid
   const navigate = useNavigate()
@@ -36,7 +38,7 @@ function Profile() {
     navigate(`/profile/edit/${auth}`)
   }
   const handleAddBike = () => {
-    navigate(`/bikes/add`)
+    navigate(`/bikes/add/${auth}`)
   }
 
   if (user) {
@@ -62,6 +64,14 @@ function Profile() {
             Edit Profile
           </button>
         </div>
+        {currentUser?.host && auth ? (
+          <HostBikes user={auth} />
+        ) : (
+          <div>
+            <h2>My bikes</h2>
+            <p>No Hosted bikes</p>
+          </div>
+        )}
       </div>
     )
   }

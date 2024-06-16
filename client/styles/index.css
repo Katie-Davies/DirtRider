@@ -26,7 +26,8 @@ body {
   background-color: #e5e9f0;
 }
 
-li {
+li,
+p {
   font-family: 'Montserrat', sans-serif;
   color: #000;
 }

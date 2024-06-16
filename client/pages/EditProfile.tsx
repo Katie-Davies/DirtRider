@@ -8,7 +8,7 @@ function EditProfile() {
   const { id } = useParams()
   const updateUser = useUpdateUser()
   const navigate = useNavigate()
-  const { data: user, isError, isLoading } = useGetUserByID(id)
+  const { data: user, isError, isLoading } = useGetUserByID(id ?? '')
 
   const [userDetails, setUserDetails] = useState({
     first_name: '',
@@ -21,12 +21,12 @@ function EditProfile() {
   useEffect(() => {
     if (user)
       setUserDetails({
-        first_name: user.first_name,
-        last_name: user.last_name,
-        email: user.email,
-        phone: user.phone,
-        authid: user.authid,
-        host: user.host,
+        first_name: user.first_name || '',
+        last_name: user.last_name || '',
+        email: user.email || '',
+        phone: user.phone || 0,
+        authid: user.authid || '',
+        host: user.host || false,
       } as User)
   }, [user])
 
