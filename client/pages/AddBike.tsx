@@ -21,7 +21,7 @@ function AddBike() {
     e.preventDefault()
     const token = await getAccessTokenSilently()
 
-    const data = { ...newBike }
+    const data = { ...newBike, user_authid: id ?? '' }
     addBike(data, token)
     console.log('bike added')
     setNewBike({
