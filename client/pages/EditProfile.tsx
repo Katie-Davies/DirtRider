@@ -3,6 +3,7 @@ import useGetUserByID from '../hooks/useGetUserByID'
 import { useNavigate, useParams } from 'react-router-dom'
 import useUpdateUser from '../hooks/useUpdateUser'
 import { User } from '../../models/models'
+import Button from '../components/Button'
 
 function EditProfile() {
   const { id } = useParams()
@@ -113,12 +114,7 @@ function EditProfile() {
             onChange={handleChanges}
           />
         </label>
-        <button
-          type="submit"
-          className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white "
-        >
-          Save
-        </button>
+        <Button type="submit">Save</Button>
       </form>
     </div>
   )

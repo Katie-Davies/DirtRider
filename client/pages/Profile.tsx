@@ -6,6 +6,7 @@ import { addUser } from '../apis/apiClient'
 import { User } from '../../models/models'
 
 import HostBikes from '../components/HostBikes'
+import Button from '../components/Button'
 
 function Profile() {
   //need to get auth working to grab real data authid
@@ -53,22 +54,22 @@ function Profile() {
           <p>Phone: {currentUser?.phone}</p>
 
           {currentUser?.host ? (
-            <button
+            <Button
               onClick={handleAddBike}
               className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
             >
               {' '}
               Add Bike
-            </button>
+            </Button>
           ) : null}
         </div>
         <div>
-          <button
+          <Button
             onClick={handleClick}
             className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
           >
             Edit Profile
-          </button>
+          </Button>
         </div>
         {currentUser?.host && auth ? (
           <HostBikes user={auth} />
