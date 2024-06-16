@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom'
 import useGetAllBikes from '../hooks/useGetAllBikes'
 
 function Bikes() {
+  const navigate = useNavigate()
   const { data: bikes, isLoading, isError } = useGetAllBikes()
 
   if (isLoading) {
@@ -22,12 +24,12 @@ function Bikes() {
           {bikes.map((bike, index) => {
             return (
               <div key={index}>
-                <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-64">
+                <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-80">
                   <figure>
                     <img
                       src={`/images/${bike.image}`}
                       alt={bike.model}
-                      className="ml-3 mt-3 h-40 w-4/5 rounded"
+                      className="ml-3 mt-3 h-48 w-4/5 rounded"
                     />
                   </figure>
                   <div className="card-body">
@@ -43,7 +45,12 @@ function Bikes() {
                     </ul>
 
                     <div className="card-actions justify-end">
-                      <button className="btn btn-sm ">Rent Now</button>
+                      <button
+                        className="btn btn-sm "
+                        onClick={() => navigate(`${bike.id}/booking`)}
+                      >
+                        Rent Now
+                      </button>
                     </div>
                   </div>
                 </div>

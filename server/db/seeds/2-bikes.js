@@ -4,7 +4,7 @@
  */
 export async function seed(knex) {
   // Deletes ALL existing entries
-  await knex('bikes').del()
+  // await knex('bikes').del()
   await knex('bikes').insert([
     {
       id: 1,

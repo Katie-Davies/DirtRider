@@ -11,7 +11,7 @@ function Profile() {
   const { user } = useAuth0()
   const auth = user?.sub
 
-  const { data: currentUser, isError, isLoading } = useGetUserByID(auth)
+  const { data: currentUser, isError, isLoading } = useGetUserByID(auth ?? '')
 
   useEffect(() => {
     if (isLoading) {

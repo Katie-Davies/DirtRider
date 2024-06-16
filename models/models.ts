@@ -12,7 +12,6 @@ export interface UserId extends User {
 }
 
 export interface Bikes {
-  id: number
   make: string
   model: string
   engine_size: string
@@ -20,4 +19,16 @@ export interface Bikes {
   user_authid: string
   price: number
   image: string
+}
+
+export interface BikeId extends Bikes {
+  id: number
+}
+
+export interface Booking {
+  id: number
+  bike_id: number
+  user_id: string
+  start_date: string
+  end_date: string
 }
