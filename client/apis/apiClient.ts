@@ -53,6 +53,12 @@ export async function updateUser(user: User) {
   return updatedUser.body as UserId
 }
 
+//get Users Bikes
+export async function getHostBikes(id: string) {
+  const bikes = await request.get(`${rootUrl}/bikes/user/${id}`)
+  return bikes.body as BikeId[]
+}
+
 //Booking ------>>>>>>>
 export async function addBooking(booking: Booking) {
   const addBooking = await request.post(`${rootUrl}/bookings`).send(booking)
