@@ -1,3 +1,5 @@
+import Button from './Button'
+
 function Searchbar() {
   return (
     <>
@@ -10,7 +12,7 @@ function Searchbar() {
           <button type="submit">Search</button>
         </form>
       </div>
-      <button className="button">Browse All</button>
+      <Button className="button">Browse All</Button>
     </>
   )
 }
