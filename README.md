@@ -5,36 +5,46 @@ An in development personal project that fills the gap in the market for hiring d
 ## In Progress 
 I am currently learning how to implement Stripe and Socket.io. Keep checking in to see the progress! 
 
+### All Users
+* View profile
+* Edit profile
+
 
 ### User Story as Customer 
 
 * To view all available bikes
 * Search all bikes by make or engine size
 * See availability for bookings
-* Book a bike for hire 
+* Book a bike for hire - update and delete
 
   ## Stretch
-  * message owner
-  * search by location -Google maps API
+  * Message owner 
+  * Search by location -Google maps API
 
 ### User Story as Bike Host
 * Add a bike - images using Multer
-* manage bookings
+* Manage bookings - update and delete
+* Set available dates
 
   ## Stretch
-  * messaging between host and customer using https://socket.io/
-  * set available dates
+  * Messaging between host and customer using https://socket.io/
+
+### AI Stretch
+* User to ask the preferences of the rider i.e. beginner, trail riding. AI to give recommendations on the type of bike they should hire.
 
 ## Current setup
 
 ### Frontend set-up 
 * React.js
 * Routes using react-route-dom
-* Custom Hooks
+* React0Query- aCustom Hooks
 * Tailwind and Daisy UI for styling
+* Auth0
+* JWT Tokens
 
 ### Backend set-up 
 * Express for routes
+* JWT middleware for authorisation
 * Knex library for database queries
 * SQLite database 
 
