@@ -32,3 +32,13 @@ export interface Booking {
   start_date: string
   end_date: string
 }
+
+export interface BookingInfo extends Booking {
+  make: string
+  model: string
+  engine_size: string
+  location: number
+  user_authid: string
+  price: number
+  image: string
+}
