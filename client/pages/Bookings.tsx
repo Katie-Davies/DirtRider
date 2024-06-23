@@ -3,18 +3,21 @@ import { useEffect, useState } from 'react'
 import { useGetRentersBookings } from '../hooks/useGetRentersBookings'
 import { BookingInfo } from '../../models/models'
 import { BookingsCard } from '../components/BookingsCard'
+import { useAuth0 } from '@auth0/auth0-react'
 
 function Bookings() {
   const [current, setCurrent] = useState([] as BookingInfo[])
   const [previous, setPrevious] = useState([] as BookingInfo[])
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
+  const { user } = useAuth0()
+  const currentUser = user?.sub
   console.log(date)
 
   const {
     data: bookings,
     isError,
     isLoading,
-  } = useGetRentersBookings('auth0|666a55ef070ec6410faea187')
+  } = useGetRentersBookings(currentUser as string)
   // const bookings = getBookingByRenterId('auth0|666a55ef070ec6410faea187')
   useEffect(() => {
     const newCurrent = [] as BookingInfo[]

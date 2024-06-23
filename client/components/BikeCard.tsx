@@ -10,6 +10,7 @@ interface Props {
   location: number
   price: number
   image: string
+  user: boolean
 }
 
 export function BikeCard(bike: Props) {
@@ -35,15 +36,20 @@ export function BikeCard(bike: Props) {
             <li>Location: {bike.location}</li>
             <li>Price per day: $ {bike.price}</li>
           </ul>
-
-          <div className="card-actions justify-end">
-            <button
-              className="btn btn-sm "
-              onClick={() => navigate(`${bike.id}/booking`)}
-            >
-              Rent Now
-            </button>
-          </div>
+          {bike.user ? (
+            <div className="card-actions justify-end">
+              <button
+                className="btn btn-sm "
+                onClick={() => navigate(`${bike.id}/booking`)}
+              >
+                Rent Now
+              </button>
+            </div>
+          ) : (
+            <div>
+              <p>Please login to book!</p>{' '}
+            </div>
+          )}
         </div>
       </div>
     </div>

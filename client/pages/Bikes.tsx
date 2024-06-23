@@ -1,8 +1,15 @@
 import useGetAllBikes from '../hooks/useGetAllBikes'
 import { BikeCard } from '../components/BikeCard'
+import { useAuth0 } from '@auth0/auth0-react'
+import { useState } from 'react'
 
 function Bikes() {
+  const { user } = useAuth0()
   const { data: bikes, isLoading, isError } = useGetAllBikes()
+  const [currentUser, setCurrentUser] = useState(false)
+  if (user) {
+    setCurrentUser(true)
+  }
 
   if (isLoading) {
     return (
@@ -31,6 +38,7 @@ function Bikes() {
                 location={bike.location}
                 price={bike.price}
                 image={bike.image}
+                user={currentUser}
               />
             )
           })}
