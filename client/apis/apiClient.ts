@@ -68,3 +68,8 @@ export async function addBooking(booking: Booking) {
 export async function deleteBooking(id: number) {
   return await request.del(`${rootUrl}/bookings/${id}`)
 }
+
+export async function getBookingByRenterId(id: string) {
+  const booking = await request.get(`${rootUrl}/bookings/renter/${id}`)
+  return booking.body as Booking[]
+}
