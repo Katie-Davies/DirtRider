@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
 import { useGetRentersBookings } from '../hooks/useGetRentersBookings'
-import { Booking, BookingInfo } from '../../models/models'
+import { BookingInfo } from '../../models/models'
+import { BookingsCard } from '../components/BookingsCard'
 
 function Bookings() {
   const [current, setCurrent] = useState([] as BookingInfo[])
@@ -51,12 +52,14 @@ function Bookings() {
                 <h2>Current bookings</h2>
                 {current.map((booking) => {
                   return (
-                    <div key={booking.id}>
-                      <h3>{booking.make}</h3>
-                      <h3>{booking.model}</h3>
-                      <p>{booking.start_date}</p>
-                      <p>{booking.end_date}</p>ß
-                    </div>
+                    <BookingsCard
+                      id={booking.id}
+                      key={booking.id}
+                      model={booking.make}
+                      make={booking.model}
+                      start_date={booking.start_date}
+                      end_date={booking.end_date}
+                    />
                   )
                 })}
               </div>
