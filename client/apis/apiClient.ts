@@ -1,5 +1,12 @@
 import request from 'superagent'
-import { BikeId, Bikes, Booking, User, UserId } from '../../models/models'
+import {
+  BikeId,
+  Bikes,
+  Booking,
+  BookingInfo,
+  User,
+  UserId,
+} from '../../models/models'
 
 const rootUrl = '/api/v1'
 
@@ -67,4 +74,9 @@ export async function addBooking(booking: Booking) {
 
 export async function deleteBooking(id: number) {
   return await request.del(`${rootUrl}/bookings/${id}`)
+}
+
+export async function getBookingByRenterId(id: string) {
+  const booking = await request.get(`${rootUrl}/bookings/renter/${id}`)
+  return booking.body as BookingInfo[]
 }
