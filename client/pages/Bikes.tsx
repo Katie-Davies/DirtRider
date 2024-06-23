@@ -1,15 +1,18 @@
 import useGetAllBikes from '../hooks/useGetAllBikes'
 import { BikeCard } from '../components/BikeCard'
 import { useAuth0 } from '@auth0/auth0-react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function Bikes() {
   const { user } = useAuth0()
   const { data: bikes, isLoading, isError } = useGetAllBikes()
   const [currentUser, setCurrentUser] = useState(false)
-  if (user) {
-    setCurrentUser(true)
-  }
+
+  useEffect(() => {
+    if (user) {
+      setCurrentUser(true)
+    }
+  }, [user])
 
   if (isLoading) {
     return (
