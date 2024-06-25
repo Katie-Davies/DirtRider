@@ -80,3 +80,8 @@ export async function getBookingByRenterId(id: string) {
   const booking = await request.get(`${rootUrl}/bookings/renter/${id}`)
   return booking.body as BookingInfo[]
 }
+
+export async function getBookingByHostId(id: string) {
+  const booking = await request.get(`%{rootUrl}/bookings/host/${id}`)
+  return booking.body as BookingInfo[]
+}
