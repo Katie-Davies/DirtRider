@@ -3,7 +3,6 @@ import Login from './Login'
 import { useState } from 'react'
 import Logout from './Logout'
 import { useAuth0 } from '@auth0/auth0-react'
-import useGetUserByID from '../hooks/useGetUserByID'
 
 function Nav() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
@@ -77,7 +76,7 @@ function Nav() {
                   </li>
                   <li>
                     <Link
-                      to="bookings/{currentUser.authid}"
+                      to="bookings"
                       className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
                     >
                       My Bookings

@@ -111,7 +111,7 @@ function BookingForm() {
           ) : (
             <div>
               <h3>Your Booking has been confirmed</h3>
-              <Button onClick={() => navigate(`/bookings/${user?.sub}`)}>
+              <Button onClick={() => navigate(`/bookings`)}>
                 View your bookings here
               </Button>
             </div>
