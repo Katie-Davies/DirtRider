@@ -4,6 +4,7 @@ import { useGetRentersBookings } from '../hooks/useGetRentersBookings'
 import { BookingInfo } from '../../models/models'
 import { BookingsCard } from '../components/BookingsCard'
 import { useAuth0 } from '@auth0/auth0-react'
+import HostBookings from '../components/HostBookings'
 
 function Bookings() {
   const [current, setCurrent] = useState([] as BookingInfo[])
@@ -18,7 +19,7 @@ function Bookings() {
     isError,
     isLoading,
   } = useGetRentersBookings(currentUser as string)
-  // const bookings = getBookingByRenterId('auth0|666a55ef070ec6410faea187')
+
   useEffect(() => {
     const newCurrent = [] as BookingInfo[]
     const newPrevious = [] as BookingInfo[]
@@ -44,12 +45,6 @@ function Bookings() {
         <h1 className="text-4xl font-bold">Bookings</h1>
         <div className="flex flex-col w-full">
           <div>
-            <h2>My Bikes </h2>
-            <h2>Current bookings</h2>
-            <h2>Previous bookings</h2>
-          </div>
-          <div>
-            <h2 className=" flex justify-center text-4xl">Rentals</h2>
             <div className="flex flex-row justify-around">
               <div className="flex flex-col">
                 <h2 className="text-2xl"> Current bookings</h2>
