@@ -84,6 +84,14 @@ function Nav() {
                     </Link>
                   </li>
                   <li>
+                    <Link
+                      to="rentals"
+                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                    >
+                      My Rentals
+                    </Link>
+                  </li>
+                  <li>
                     <Logout />
                   </li>
                 </>

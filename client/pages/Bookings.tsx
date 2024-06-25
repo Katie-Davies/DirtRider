@@ -44,9 +44,7 @@ function Bookings() {
       <div className="flex flex-col items-center justify-center  w-full">
         <h1 className="text-4xl font-bold">Bookings</h1>
         <div className="flex flex-col w-full">
-          <HostBookings currentUser={currentUser} />
           <div>
-            <h2 className=" flex justify-center text-4xl">My Rentals</h2>
             <div className="flex flex-row justify-around">
               <div className="flex flex-col">
                 <h2 className="text-2xl"> Current bookings</h2>
