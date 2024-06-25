@@ -82,6 +82,6 @@ export async function getBookingByRenterId(id: string) {
 }
 
 export async function getBookingByHostId(id: string) {
-  const booking = await request.get(`%{rootUrl}/bookings/host/${id}`)
+  const booking = await request.get(`${rootUrl}/bookings/host/${id}`)
   return booking.body as BookingInfo[]
 }
