@@ -56,6 +56,7 @@ export async function addBooking(data: Booking) {
 //get renters booking
 export async function getRentersBookings(id: string) {
   return await db('bookings')
+    .select('bookings.id as bookingId', 'bookings.*', 'bikes.*')
     .join('bikes', 'bikes.id', 'bookings.bike_id')
     .where('bookings.user_id', id)
 }
@@ -63,6 +64,7 @@ export async function getRentersBookings(id: string) {
 //get hosts bookings
 export async function getHostsBookings(id: string) {
   return await db('bookings')
+    .select('bookings.id as bookingId', 'bookings.*', 'bikes.*')
     .join('bikes', 'bikes.id', 'bookings.bike_id')
     .where('bikes.user_authid', id)
 }

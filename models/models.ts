@@ -34,6 +34,7 @@ export interface Booking {
 }
 
 export interface BookingInfo extends Booking {
+  bookingId: number
   make: string
   model: string
   engine_size: string

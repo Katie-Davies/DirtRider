@@ -51,8 +51,8 @@ function Bookings() {
                 {current.map((booking) => {
                   return (
                     <BookingsCard
-                      id={booking.id}
-                      key={booking.id}
+                      bookingId={booking.bookingId}
+                      key={booking.bookingId}
                       model={booking.model}
                       make={booking.make}
                       start_date={booking.start_date}
@@ -63,12 +63,12 @@ function Bookings() {
                 })}
               </div>
               <div className="flex flex-col">
-                <h1 className="text-2xl">Previous bookings</h1>
+                <h1 className="text-2xl">Your History</h1>
                 {previous.map((booking) => {
                   return (
                     <BookingsCard
-                      id={booking.id}
-                      key={booking.id}
+                      bookingId={booking.bookingId}
+                      key={booking.bookingId}
                       model={booking.model}
                       make={booking.make}
                       start_date={booking.start_date}
