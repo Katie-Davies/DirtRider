@@ -63,7 +63,7 @@ function Bookings() {
                 })}
               </div>
               <div className="flex flex-col">
-                <h1 className="text-2xl">Previous bookings</h1>
+                <h1 className="text-2xl">Your History</h1>
                 {previous.map((booking) => {
                   return (
                     <BookingsCard
