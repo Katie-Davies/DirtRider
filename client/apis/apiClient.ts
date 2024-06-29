@@ -85,3 +85,10 @@ export async function getBookingByHostId(id: string) {
   const booking = await request.get(`${rootUrl}/bookings/host/${id}`)
   return booking.body as BookingInfo[]
 }
+
+export async function updateBooking(booking: Booking) {
+  const updatedBooking = await request
+    .put(`${rootUrl}/bookings/${booking.id}`)
+    .send(booking)
+  return updatedBooking.body as Booking
+}
