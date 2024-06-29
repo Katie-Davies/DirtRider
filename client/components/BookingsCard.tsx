@@ -14,7 +14,7 @@ interface Props {
 
 export function BookingsCard(booking: Props) {
   const deleteBookingMutation = useDeleteBooking()
-  console.log(booking.bookingId)
+
   const handleDelete = () => {
     deleteBookingMutation.mutate(booking.bookingId, {
       onSuccess: () => {
@@ -30,7 +30,7 @@ export function BookingsCard(booking: Props) {
     return dateString.split('-').reverse().join('/')
   }
   return (
-    <div key={booking.id}>
+    <div key={booking.bookingId}>
       <div className="card bg-white mt-7 h-auto border-2 w-96 shadow-lg">
         <div className="card-body">
           <h3 className="card-title">
