@@ -51,8 +51,8 @@ function Bookings() {
                 {current.map((booking) => {
                   return (
                     <BookingsCard
-                      id={booking.id}
-                      key={booking.id}
+                      bookingId={booking.bookingId}
+                      key={booking.bookingId}
                       model={booking.model}
                       make={booking.make}
                       start_date={booking.start_date}
@@ -67,8 +67,8 @@ function Bookings() {
                 {previous.map((booking) => {
                   return (
                     <BookingsCard
-                      id={booking.id}
-                      key={booking.id}
+                      bookingId={booking.bookingId}
+                      key={booking.bookingId}
                       model={booking.model}
                       make={booking.make}
                       start_date={booking.start_date}

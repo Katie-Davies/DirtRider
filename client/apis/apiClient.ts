@@ -90,5 +90,5 @@ export async function updateBooking(booking: Booking) {
   const updatedBooking = await request
     .put(`${rootUrl}/bookings/${booking.id}`)
     .send(booking)
-  return updatedBooking.body as Booking
+  return updatedBooking.body as BookingInfo
 }

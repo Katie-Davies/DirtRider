@@ -1,9 +1,10 @@
-import useUpdateBooking from '../hooks/useUpdateBooking'
+import useDeleteBooking from '../hooks/useDeleteBooking'
+import { deleteBooking } from '../apis/apiClient'
 import Button from './Button'
 
 interface Props {
   key: number
-  id: number
+  bookingId: number
   make: string
   model: string
   start_date: string
@@ -12,9 +13,18 @@ interface Props {
 }
 
 export function BookingsCard(booking: Props) {
-  const handleClick = () => {}
-
-  const handleDelete = () => {}
+  const deleteBookingMutation = useDeleteBooking()
+  console.log(booking.bookingId)
+  const handleDelete = () => {
+    deleteBookingMutation.mutate(booking.bookingId, {
+      onSuccess: () => {
+        console.log('Booking deleted successfully!')
+      },
+      onError: (error) => {
+        console.error('Error deleting booking:', error)
+      },
+    })
+  }
 
   const formatDate = (dateString: string) => {
     return dateString.split('-').reverse().join('/')
@@ -36,7 +46,10 @@ export function BookingsCard(booking: Props) {
               <Button className="btn bg-customBlue text-white">
                 Edit Booking
               </Button>
-              <Button className="btn bg-customRed text-white">
+              <Button
+                className="btn bg-customRed text-white"
+                onClick={handleDelete}
+              >
                 Cancel Booking
               </Button>
             </div>

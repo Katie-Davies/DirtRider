@@ -6,7 +6,7 @@ function useDeleteBooking() {
   return useMutation({
     mutationFn: (values: number) => deleteBooking(values),
     onSuccess: () => {
-      client.invalidateQueries({ queryKey: ['booking'] })
+      client.invalidateQueries({ queryKey: ['renterBookings'] })
     },
   })
 }
