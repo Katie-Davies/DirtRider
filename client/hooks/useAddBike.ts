@@ -14,7 +14,7 @@ import { Bikes } from '../../models/models'
 const useAddBike = () => {
   const queryClient = useQueryClient()
 
-  return useMutation<any, Error, { data: any; token: string }>({
+  return useMutation<any, Error, { data: Bikes; token: string }>({
     // Adjust types as per your actual data structure
     mutationFn: ({ data, token }) => addBike({ data, token }), // Arrow function to call addBike with parameters
 
