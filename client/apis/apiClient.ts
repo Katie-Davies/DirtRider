@@ -7,7 +7,6 @@ import {
   User,
   UserId,
 } from '../../models/models'
-import { MutationFunction } from '@tanstack/react-query'
 
 const rootUrl = '/api/v1'
 
