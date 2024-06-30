@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { BikeId } from '../../models/models'
 import { updateBike } from '../apis/apiClient'
 import useUpdateBikePrice from '../hooks/useUpdateBikePrice'
+import useDeleteBike from '../hooks/useDeleteBike'
 
 function SmallBikeCard(bike: BikeId): JSX.Element {
   const [updatedBike, setUpdatedBike] = useState<BikeId>({
@@ -15,6 +16,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
     image: bike.image,
   })
   const updatedPrice = useUpdateBikePrice()
+  const deleteBike = useDeleteBike()
   const [updatePrice, setUpdatePrice] = useState<boolean>(false)
   const handleUpdate = () => {
     setUpdatePrice(true)
@@ -27,6 +29,12 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
     setUpdatePrice(false)
     console.log('bike has been updated')
   }
+
+  const handleDelete = () => {
+    deleteBike.mutate(bike.id)
+    console.log('bike has been deleted')
+  }
+
   return (
     <div key={bike.id}>
       <h2>
@@ -36,7 +44,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
         <img src={`public/images/${bike.image}`} alt={bike.model} />
       ) : null}
 
-      <p>{bike.price}</p>
+      <p>${bike.price}</p>
       <button
         className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
         onClick={handleUpdate}
@@ -60,7 +68,10 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
         </>
       ) : null}
 
-      <button className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white">
+      <button
+        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+        onClick={handleDelete}
+      >
         Delete Bike
       </button>
     </div>

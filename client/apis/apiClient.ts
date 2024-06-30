@@ -37,7 +37,7 @@ export async function updateBike(data: BikeId) {
   return updatedBike.body as BikeId
 }
 //delete bike
-export async function deletebBike(id: number) {
+export async function deleteBike(id: number) {
   return await request.del(`${rootUrl}/bikes/${id}`)
 }
 

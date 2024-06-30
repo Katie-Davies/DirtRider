@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
 import { addBike } from '../apis/apiClient'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button'
 
 function AddBike() {
@@ -18,6 +18,7 @@ function AddBike() {
     image: '',
   })
   console.log(newBike.user_authid)
+  const navigate = useNavigate()
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
     const token = await getAccessTokenSilently()
@@ -34,6 +35,7 @@ function AddBike() {
       price: 0,
       image: '',
     })
+    navigate('/profile')
   }
 
   function handleChanges(e: React.ChangeEvent<HTMLInputElement>) {
