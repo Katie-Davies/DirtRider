@@ -32,7 +32,7 @@ export async function addBike(bike: Bikes, token: string) {
 //update bike
 export async function updateBike(data: BikeId) {
   const updatedBike = await request
-    .post(`${rootUrl}/bikes/${data.id}`)
+    .patch(`${rootUrl}/bikes/${data.id}`)
     .send(data)
   return updatedBike.body as BikeId
 }
