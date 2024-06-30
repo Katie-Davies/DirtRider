@@ -53,18 +53,19 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
       </button>
       {updatePrice ? (
         <>
-          <input
-            type="number"
-            value={updatedBike.price}
-            onChange={(e) =>
-              setUpdatedBike({
-                ...updatedBike,
-                price: parseInt(e.target.value),
-              })
-            }
-            onSubmit={handleUpdatePrice}
-          />
-          <button onClick={handleUpdatePrice}>Submit</button>
+          <form onSubmit={handleUpdatePrice}>
+            <input
+              type="number"
+              value={updatedBike.price}
+              onChange={(e) =>
+                setUpdatedBike({
+                  ...updatedBike,
+                  price: parseInt(e.target.value),
+                })
+              }
+            />
+            <button onClick={handleUpdatePrice}>Submit</button>
+          </form>
         </>
       ) : null}
 
