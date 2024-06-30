@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { BikeId } from '../../models/models'
-import { updateBike } from '../apis/apiClient'
+
 import useUpdateBikePrice from '../hooks/useUpdateBikePrice'
 import useDeleteBike from '../hooks/useDeleteBike'
 
