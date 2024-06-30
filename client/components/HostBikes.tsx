@@ -1,5 +1,7 @@
 import { useGetHostsBikes } from '../hooks/useGetHostsBikes'
 
+import SmallBikeCard from './SmallBikeCard'
+
 interface Props {
   user?: string
 }
@@ -18,26 +20,12 @@ function HostBikes({ user }: Props): JSX.Element {
     return (
       <>
         <h1>My Bikes </h1>
-        {bikes.map((bike) => {
-          return (
-            <div key={bike.id}>
-              <h2>
-                {bike.make} {bike.model}
-              </h2>
-              {bike.image ? (
-                <img src={`public/images/${bike.image}`} alt={bike.model} />
-              ) : null}
-
-              <p>{bike.price}</p>
-              <button className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white">
-                Update Price
-              </button>
-              <button className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white">
-                Delete Bike
-              </button>
-            </div>
-          )
-        })}
+        {bikes.map(
+          (bike) => (
+            <SmallBikeCard key={bike.id} {...bike} />
+          ),
+          // )
+        )}
       </>
     )
   }

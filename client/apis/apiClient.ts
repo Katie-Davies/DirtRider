@@ -21,23 +21,29 @@ export async function getBikeById(id: string) {
   return bike.body[0] as BikeId
 }
 
-export async function addBike(bike: Bikes, token: string) {
+export async function addBike({
+  data,
+  token,
+}: {
+  data: Bikes
+  token: string
+}): Promise<any> {
   const newBike = await request
     .post(`${rootUrl}/bikes`)
     .set('Authorization', `Bearer ${token}`)
-    .send(bike)
+    .send(data)
   return newBike.body as Bikes
 }
 
 //update bike
 export async function updateBike(data: BikeId) {
   const updatedBike = await request
-    .post(`${rootUrl}/bikes/${data.id}`)
+    .patch(`${rootUrl}/bikes/${data.id}`)
     .send(data)
   return updatedBike.body as BikeId
 }
 //delete bike
-export async function deletebBike(id: number) {
+export async function deleteBike(id: number) {
   return await request.del(`${rootUrl}/bikes/${id}`)
 }
 

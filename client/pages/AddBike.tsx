@@ -1,8 +1,9 @@
 import { useAuth0 } from '@auth0/auth0-react'
 import { useState } from 'react'
-import { addBike } from '../apis/apiClient'
-import { useParams } from 'react-router-dom'
+
+import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button'
+import useAddBike from '../hooks/useAddBike'
 
 function AddBike() {
   const { getAccessTokenSilently } = useAuth0()
@@ -17,23 +18,32 @@ function AddBike() {
     price: 0,
     image: '',
   })
-  console.log(newBike.user_authid)
+  const navigate = useNavigate()
+
+  const addBike = useAddBike()
+
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const token = await getAccessTokenSilently()
+    try {
+      const token = await getAccessTokenSilently()
+      const data = { ...newBike, user_authid: id ?? '' }
+      await addBike.mutate({ data, token }) // Ensure `mutateAsync` is used for async operations
 
-    const data = { ...newBike, user_authid: id ?? '' }
-    addBike(data, token)
-    console.log('bike added')
-    setNewBike({
-      make: '',
-      model: '',
-      engine_size: '',
-      location: 0,
-      user_authid: id,
-      price: 0,
-      image: '',
-    })
+      console.log('bike added')
+      setNewBike({
+        make: '',
+        model: '',
+        engine_size: '',
+        location: 0,
+        user_authid: id,
+        price: 0,
+        image: '',
+      })
+
+      navigate('/profile')
+    } catch (error) {
+      console.error('Error adding bike:', error)
+    }
   }
 
   function handleChanges(e: React.ChangeEvent<HTMLInputElement>) {
