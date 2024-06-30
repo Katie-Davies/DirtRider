@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { BikeId } from '../../models/models'
 import { updateBike } from '../apis/apiClient'
+import useUpdateBikePrice from '../hooks/useUpdateBikePrice'
 
 function SmallBikeCard(bike: BikeId): JSX.Element {
   const [updatedBike, setUpdatedBike] = useState<BikeId>({
@@ -13,6 +14,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
     price: bike.price,
     image: bike.image,
   })
+  const updatedPrice = useUpdateBikePrice()
   const [updatePrice, setUpdatePrice] = useState<boolean>(false)
   const handleUpdate = () => {
     setUpdatePrice(true)
@@ -20,7 +22,9 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
   }
 
   const handleUpdatePrice = () => {
-    updateBike(updatedBike)
+    updatedPrice.mutate(updatedBike)
+    // updateBike(updatedBike)
+    setUpdatePrice(false)
     console.log('bike has been updated')
   }
   return (
