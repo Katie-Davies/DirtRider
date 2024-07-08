@@ -19,7 +19,8 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
   const updatedPrice = useUpdateBikePrice()
   const deleteBike = useDeleteBike()
   const [updatePrice, setUpdatePrice] = useState<boolean>(false)
-  const [open, setOpen] = useState(false)
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [updateOpen, setUpdateOpen] = useState(false)
 
   const handleUpdate = () => {
     setUpdatePrice(true)
@@ -56,7 +57,12 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
       </button>
       {updatePrice ? (
         <>
-          <form onSubmit={handleUpdatePrice}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault()
+              setUpdateOpen(true)
+            }}
+          >
             <input
               type="number"
               value={updatedBike.price}
@@ -67,22 +73,30 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
                 })
               }
             />
-            <button onClick={handleUpdatePrice}>Submit</button>
+            <button onClick={() => setUpdateOpen(true)}>Submit</button>
+            {updateOpen ? (
+              <Popup
+                text="Are you sure you want to update the price?"
+                action={handleUpdatePrice}
+                content="update"
+                closePopup={() => setUpdateOpen(false)}
+              />
+            ) : null}
           </form>
         </>
       ) : null}
 
       <button
         className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
-        onClick={() => setOpen(true)}
+        onClick={() => setDeleteOpen(true)}
       >
         Delete Bike
       </button>
-      {open ? (
+      {deleteOpen ? (
         <Popup
           text="Are you sure you want to delete this bike?"
           action={handleDelete}
-          closePopup={() => setOpen(false)}
+          closePopup={() => setDeleteOpen(false)}
           content="Yes"
         />
       ) : null}
