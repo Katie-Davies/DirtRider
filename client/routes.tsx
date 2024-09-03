@@ -21,7 +21,7 @@ export default createRoutesFromElements(
       <Route path="profile" element={<Profile />} />
       <Route path="profile/edit/:id" element={<EditProfile />} />
       <Route path="bookings" element={<Bookings />} />
-      <Route path="bookings/edi/:id" element={<EditBooking />} />
+      <Route path="bookings/edit/:id" element={<EditBooking />} />
       <Route path="rentals" element={<HostRentals />} />
     </Route>
   </>,
