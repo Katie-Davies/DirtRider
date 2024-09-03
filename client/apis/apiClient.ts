@@ -98,3 +98,8 @@ export async function updateBooking(booking: Booking) {
     .send(booking)
   return updatedBooking.body as BookingInfo
 }
+
+export async function getBookingById(id: number) {
+  const booking = await request.get(`${rootUrl}/bookings/${id}`)
+  return booking.body[0] as BookingInfo
+}
