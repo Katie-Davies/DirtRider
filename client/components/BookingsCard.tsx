@@ -1,5 +1,5 @@
 import useDeleteBooking from '../hooks/useDeleteBooking'
-import { deleteBooking } from '../apis/apiClient'
+
 import Button from './Button'
 
 interface Props {
