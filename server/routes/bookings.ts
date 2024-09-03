@@ -27,6 +27,17 @@ router.get('/host/:id', async (req, res) => {
     res.status(500).json({ message: 'Error retrieving bookings' })
   }
 })
+// GET booking by id
+router.get('/:id', async (req, res) => {
+  const id = Number(req.params.id)
+  try {
+    const bookings = await db.getBookingById(id)
+    res.status(200).json(bookings)
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({ message: 'Error retrieving bookings' })
+  }
+})
 
 // create booking
 router.post('/', async (req, res) => {
