@@ -78,3 +78,8 @@ export async function deleteBooking(id: number) {
 export async function updateBooking(id: number, data: Booking) {
   return await db('bookings').where({ id }).update(data)
 }
+
+//get booking by id
+export async function getBookingById(id: number) {
+  return await db('bookings').select().where({ id })
+}
