@@ -10,6 +10,7 @@ function EditBooking() {
     isLoading,
   } = useGetBookingById(Number(bookingId))
 
+  console.log(booking)
   return (
     <div>
       <h1>Edit Booking</h1>
