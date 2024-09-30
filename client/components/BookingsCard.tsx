@@ -1,5 +1,6 @@
+import { useNavigate } from 'react-router-dom'
 import useDeleteBooking from '../hooks/useDeleteBooking'
-import { deleteBooking } from '../apis/apiClient'
+
 import Button from './Button'
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 
 export function BookingsCard(booking: Props) {
   const deleteBookingMutation = useDeleteBooking()
+  const navigate = useNavigate()
 
   const handleDelete = () => {
     deleteBookingMutation.mutate(booking.bookingId, {
@@ -24,6 +26,9 @@ export function BookingsCard(booking: Props) {
         console.error('Error deleting booking:', error)
       },
     })
+  }
+  const handleEdit = () => {
+    navigate(`/bookings/edit/${booking.bookingId}`)
   }
 
   const formatDate = (dateString: string) => {
@@ -43,7 +48,10 @@ export function BookingsCard(booking: Props) {
           </div>
           {booking.current ? (
             <div className="card-actions justify-end">
-              <Button className="btn bg-customBlue text-white">
+              <Button
+                className="btn bg-customBlue text-white"
+                onClick={handleEdit}
+              >
                 Edit Booking
               </Button>
               <Button

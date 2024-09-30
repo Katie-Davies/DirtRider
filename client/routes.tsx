@@ -9,6 +9,7 @@ import EditProfile from './pages/EditProfile.tsx'
 import BookingForm from './pages/BookingForm.tsx'
 import Bookings from './pages/Bookings.tsx'
 import HostRentals from './pages/HostRentals.tsx'
+import EditBooking from './components/EditBooking.tsx'
 
 export default createRoutesFromElements(
   <>
@@ -20,6 +21,7 @@ export default createRoutesFromElements(
       <Route path="profile" element={<Profile />} />
       <Route path="profile/edit/:id" element={<EditProfile />} />
       <Route path="bookings" element={<Bookings />} />
+      <Route path="bookings/edit/:id" element={<EditBooking />} />
       <Route path="rentals" element={<HostRentals />} />
     </Route>
   </>,
