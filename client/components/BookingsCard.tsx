@@ -66,14 +66,16 @@ export function BookingsCard(booking: Props) {
               >
                 Cancel Booking
               </Button>
-              {isPopupOpen && (
-                <Popup
-                  text="Are you sure you want to delete this booking?"
-                  action={handleDelete}
-                  closePopup={() => setIsPopupOpen(false)}
-                  content="Yes"
-                />
-              )}
+              <div className="z-50">
+                {isPopupOpen && (
+                  <Popup
+                    text="Are you sure you want to delete this booking?"
+                    action={handleDelete}
+                    closePopup={() => setIsPopupOpen(false)}
+                    content="Yes"
+                  />
+                )}
+              </div>
             </div>
           ) : null}
         </div>
