@@ -70,7 +70,7 @@ export function BookingsCard(booking: Props) {
                 <Popup
                   text="Are you sure you want to delete this booking?"
                   action={handleDelete}
-                  closePopup={() => {}}
+                  closePopup={() => setIsPopupOpen(false)}
                   content="Yes"
                 />
               )}
