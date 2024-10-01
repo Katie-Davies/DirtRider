@@ -45,20 +45,29 @@ function Profile() {
   if (user) {
     return (
       <div className="flex justify-around w-full mt-10">
-        <div>
-          <h1 className="text-4xl mb-3">Your Profile</h1>
-          <p>
-            Name: {currentUser?.first_name} {currentUser?.last_name}
-          </p>
-          <p>Email: {currentUser?.email}</p>
-          <p>Phone: {currentUser?.phone}</p>
-          <div>
-            <Button
-              onClick={handleClick}
-              className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-5"
-            >
-              Edit Profile
-            </Button>
+        <div className="bg-white w-1/3 rounded-lg  border-buttonBlue border-4">
+          <div className="flex justify-center flex-col flex-wrap content-center pt-10">
+            <h1 className="text-4xl mb-3 text-darkBlue">Your Profile</h1>
+            <p className="m-3">
+              <span className="text-xl font-extrabold pr-3">Name:</span>
+              {currentUser?.first_name} {currentUser?.last_name}
+            </p>
+            <p className="m-3">
+              <span className="text-xl font-extrabold pr-3">Email:</span>{' '}
+              {currentUser?.email}
+            </p>
+            <p className="m-3">
+              <span className="text-xl font-extrabold pr-3">Phone:</span>{' '}
+              {currentUser?.phone}
+            </p>
+            <div>
+              <Button
+                onClick={handleClick}
+                className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-5"
+              >
+                Edit Profile
+              </Button>
+            </div>
           </div>
         </div>
         <div>
