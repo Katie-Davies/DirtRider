@@ -19,7 +19,6 @@ function HostBikes({ user }: Props): JSX.Element {
   if (bikes) {
     return (
       <>
-        <h1>My Bikes </h1>
         {bikes.map(
           (bike) => (
             <SmallBikeCard key={bike.id} {...bike} />
