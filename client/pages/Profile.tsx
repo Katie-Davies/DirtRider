@@ -44,7 +44,7 @@ function Profile() {
 
   if (user) {
     return (
-      <div className="flex justify-around">
+      <div className="flex justify-around w-full mt-10">
         <div>
           <h1 className="text-3xl">Your Profile</h1>
           <p>
