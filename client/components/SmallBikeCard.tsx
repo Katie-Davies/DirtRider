@@ -41,7 +41,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
 
   return (
     <div key={bike.id}>
-      <h2>
+      <h2 className="text-2xl">
         {bike.make} {bike.model}
       </h2>
       {bike.image ? (
