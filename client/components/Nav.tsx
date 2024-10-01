@@ -50,7 +50,7 @@ function Nav() {
               <li>
                 <Link
                   to="/"
-                  className=" hover:bg-white  focus:bg-customBlue focus:text-darkBlue"
+                  className=" hover:bg-white  focus:bg-customBlue focus:text-darkBlue text-white hover:text-darkBlue"
                 >
                   Home
                 </Link>
@@ -59,7 +59,7 @@ function Nav() {
               <li>
                 <Link
                   to="bikes"
-                  className=" hover:bg-white  focus:bg-white focus:text-darkBlue"
+                  className=" hover:bg-white  focus:bg-white focus:text-darkBlue text-white hover:text-darkBlue"
                 >
                   View Bikes
                 </Link>
@@ -69,7 +69,7 @@ function Nav() {
                   <li>
                     <Link
                       to="profile"
-                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue text-white hover:text-darkBlue"
                     >
                       Profile
                     </Link>
@@ -77,7 +77,7 @@ function Nav() {
                   <li>
                     <Link
                       to="bookings"
-                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue text-white hover:text-darkBlue"
                     >
                       My Bookings
                     </Link>
@@ -85,7 +85,7 @@ function Nav() {
                   <li>
                     <Link
                       to="rentals"
-                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue text-white hover:text-darkBlue"
                     >
                       My Rentals
                     </Link>
