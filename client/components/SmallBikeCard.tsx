@@ -50,7 +50,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
 
       <p>${bike.price}</p>
       <button
-        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-3"
         onClick={handleUpdate}
       >
         Update Price
