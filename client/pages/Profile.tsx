@@ -70,7 +70,7 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className=" w-4/5 md:w-1/3 ">
+        <div className=" w-4/5 md:w-1/3 mr-2">
           <div className="flex justify-center flex-col flex-wrap content-center pt-5">
             <h2 className="text-4xl">Your bikes</h2>
             {currentUser?.host ? (
