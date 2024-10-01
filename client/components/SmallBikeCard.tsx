@@ -40,7 +40,10 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
   }
 
   return (
-    <div key={bike.id} className="m-5 bg-slate-200 rounded-lg">
+    <div
+      key={bike.id}
+      className="m-5 bg-white mt-7 h-auto border-2 w-96 shadow-lg rounded-lg"
+    >
       <h2 className="text-2xl ml-3 pt-4">
         {bike.make} {bike.model}
       </h2>
