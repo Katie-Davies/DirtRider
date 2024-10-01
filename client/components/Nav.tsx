@@ -45,12 +45,12 @@ function Nav() {
           {isDropdownOpen && (
             <ul
               tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-customBlueBlue rounded-box w-52"
+              className="dropdown-content z-[1] menu p-2 shadow bg-customBlue rounded-box w-52"
             >
               <li>
                 <Link
                   to="/"
-                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                  className=" hover:bg-white  focus:bg-customBlue focus:text-darkBlue"
                 >
                   Home
                 </Link>
@@ -59,7 +59,7 @@ function Nav() {
               <li>
                 <Link
                   to="bikes"
-                  className=" hover:bg-customBlue  focus:bg-customBlue focus:text-darkBlue"
+                  className=" hover:bg-white  focus:bg-white focus:text-darkBlue"
                 >
                   View Bikes
                 </Link>
@@ -69,7 +69,7 @@ function Nav() {
                   <li>
                     <Link
                       to="profile"
-                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
                     >
                       Profile
                     </Link>
@@ -77,7 +77,7 @@ function Nav() {
                   <li>
                     <Link
                       to="bookings"
-                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
                     >
                       My Bookings
                     </Link>
@@ -85,7 +85,7 @@ function Nav() {
                   <li>
                     <Link
                       to="rentals"
-                      className=" hover:bg-customBlue focus:bg-customBlue focus:text-darkBlue"
+                      className=" hover:bg-white focus:bg-white focus:text-darkBlue"
                     >
                       My Rentals
                     </Link>
