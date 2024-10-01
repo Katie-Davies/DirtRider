@@ -62,49 +62,49 @@ function EditProfile() {
 
   return (
     <div className="flex flex-col">
-      <h1>Edit Profile</h1>
+      <h1 className="text-3xl">Edit Profile</h1>
       <form className="flex flex-col" onSubmit={handleSubmit}>
-        <label>
+        <label className="font-bold">
           First Name:
           <input
             type="text"
-            className="m-5 w-fit"
+            className="m-5 w-fit rounded-lg p-1"
             value={userDetails.first_name}
             name="first_name"
             onChange={handleChanges}
           />
         </label>
-        <label>
+        <label className="font-bold">
           Last Name:
           <input
             type="text"
-            className="m-5 w-fit"
+            className="m-5 w-fit rounded-lg p-1"
             value={userDetails.last_name}
             onChange={handleChanges}
             name="last_name"
           />
         </label>
-        <label>
+        <label className="font-bold">
           Email:
           <input
             type="email"
-            className="m-5 w-fit"
+            className="m-5 w-fit rounded-lg p-1"
             value={userDetails.email}
             name="email"
             onChange={handleChanges}
           />
         </label>
-        <label>
+        <label className="font-bold">
           Phone
           <input
             type="text"
-            className="m-5 w-fit"
+            className="m-5 w-fit rounded-lg p-1"
             value={userDetails.phone}
             name="phone"
             onChange={handleChanges}
           />
         </label>
-        <label>
+        <label className="font-bold">
           Host:
           <input
             type="checkbox"

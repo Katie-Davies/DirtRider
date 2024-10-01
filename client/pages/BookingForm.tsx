@@ -8,6 +8,7 @@ import { useAuth0 } from '@auth0/auth0-react'
 import { Booking } from '../../models/models'
 import useAddBooking from '../hooks/useAddBooking'
 import Button from '../components/Button'
+import { Popup } from '../components/Popup/Popup'
 
 function BookingForm() {
   const { user } = useAuth0()
@@ -18,6 +19,7 @@ function BookingForm() {
   const [confirmed, setConfirmed] = useState(false)
   const [selectedDates, setSelectedDates] = useState<Date[]>([])
   const [price, setPrice] = useState(0)
+  const [confirmBooking, setConfirmBooking] = useState(false)
 
   const addBooking = useAddBooking()
   const navigate = useNavigate()
@@ -43,6 +45,10 @@ function BookingForm() {
     console.log('Booking data:', bookingData)
     addBooking.mutate(bookingData)
     setConfirmed(true)
+  }
+
+  const handleConfirm = () => {
+    setConfirmBooking(true)
   }
 
   const formatDate = (date: Date) => (date ? format(date, 'dd-MM-yyyy') : '')
@@ -106,7 +112,15 @@ function BookingForm() {
               <p>{formatDate(startDate)}</p>
               <p>{formatDate(endDate)}</p>
               <p>${price}</p>
-              <Button onClick={handleSubmit}>Confirm booking</Button>
+              <Button onClick={handleConfirm}>Confirm booking</Button>
+              {confirmBooking && (
+                <Popup
+                  text="Are you sure you want to confirm this booking?"
+                  closePopup={() => setConfirmBooking(false)}
+                  action={() => handleSubmit()}
+                  content="Confirm Booking"
+                />
+              )}
             </div>
           ) : (
             <div>

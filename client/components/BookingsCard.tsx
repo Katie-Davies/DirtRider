@@ -2,6 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import useDeleteBooking from '../hooks/useDeleteBooking'
 
 import Button from './Button'
+import { Popup } from './Popup/Popup'
+import { useState } from 'react'
 
 interface Props {
   key: number
@@ -16,6 +18,7 @@ interface Props {
 export function BookingsCard(booking: Props) {
   const deleteBookingMutation = useDeleteBooking()
   const navigate = useNavigate()
+  const [isPopupOpen, setIsPopupOpen] = useState(false)
 
   const handleDelete = () => {
     deleteBookingMutation.mutate(booking.bookingId, {
@@ -29,6 +32,9 @@ export function BookingsCard(booking: Props) {
   }
   const handleEdit = () => {
     navigate(`/bookings/edit/${booking.bookingId}`)
+  }
+  const confrimDelete = () => {
+    setIsPopupOpen(true)
   }
 
   const formatDate = (dateString: string) => {
@@ -56,10 +62,20 @@ export function BookingsCard(booking: Props) {
               </Button>
               <Button
                 className="btn bg-customRed text-white"
-                onClick={handleDelete}
+                onClick={confrimDelete}
               >
                 Cancel Booking
               </Button>
+              <div className="z-50">
+                {isPopupOpen && (
+                  <Popup
+                    text="Are you sure you want to delete this booking?"
+                    action={handleDelete}
+                    closePopup={() => setIsPopupOpen(false)}
+                    content="Yes"
+                  />
+                )}
+              </div>
             </div>
           ) : null}
         </div>

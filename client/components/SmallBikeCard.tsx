@@ -40,20 +40,23 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
   }
 
   return (
-    <div key={bike.id}>
-      <h2>
+    <div
+      key={bike.id}
+      className="m-5 bg-white mt-7 h-auto border-2 w-96 shadow-lg rounded-lg"
+    >
+      <h2 className="text-2xl ml-3 pt-4">
         {bike.make} {bike.model}
       </h2>
       {bike.image ? (
         <img src={`public/images/${bike.image}`} alt={bike.model} />
       ) : null}
 
-      <p>${bike.price}</p>
+      <p className="ml-3 mt-3">Daily Rate: ${bike.price}</p>
       <button
-        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-3"
         onClick={handleUpdate}
       >
-        Update Price
+        Update Daily Rate
       </button>
       {updatePrice ? (
         <>
@@ -76,7 +79,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
             <button onClick={() => setUpdateOpen(true)}>Submit</button>
             {updateOpen ? (
               <Popup
-                text="Are you sure you want to update the price?"
+                text="Are you sure you want to update the daily rate?"
                 action={handleUpdatePrice}
                 content="update"
                 closePopup={() => setUpdateOpen(false)}
@@ -87,7 +90,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
       ) : null}
 
       <button
-        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+        className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-3"
         onClick={() => setDeleteOpen(true)}
       >
         Delete Bike

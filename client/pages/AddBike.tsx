@@ -56,9 +56,9 @@ function AddBike() {
 
   return (
     <div>
-      <h1>Add Bikes</h1>
-      <form onSubmit={handleSubmit}>
-        <label>
+      <h1 className="text-3xl">Add Bikes</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap ">
+        <label className="font-bold">
           Make:
           <input
             type="text"
@@ -66,6 +66,7 @@ function AddBike() {
             name="make"
             onChange={handleChanges}
             value={newBike.make}
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -76,6 +77,7 @@ function AddBike() {
             name="model"
             onChange={handleChanges}
             value={newBike.model}
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -86,6 +88,7 @@ function AddBike() {
             name="engine_size"
             onChange={handleChanges}
             value={newBike.engine_size}
+            className="m-5 w-full md:w-3/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -96,6 +99,7 @@ function AddBike() {
             name="location"
             onChange={handleChanges}
             value={newBike.location}
+            className="m-5 w-full md:w-1/2 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -106,6 +110,7 @@ function AddBike() {
             name="price"
             onChange={handleChanges}
             value={newBike.price}
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <Button type="submit">Submit</Button>

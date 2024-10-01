@@ -1,6 +1,5 @@
 import { createRoot } from 'react-dom/client'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { Auth0Provider } from '@auth0/auth0-react'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import routes from './routes.tsx'
@@ -22,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     >
       <QueryClientProvider client={queryClient}>
         <RouterProvider router={router} />
-        <ReactQueryDevtools />
+        {/* <ReactQueryDevtools /> */}
       </QueryClientProvider>
     </Auth0Provider>,
   )
