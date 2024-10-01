@@ -44,8 +44,8 @@ function Profile() {
 
   if (user) {
     return (
-      <div className="flex justify-around w-full mt-10">
-        <div className="bg-white w-1/4 rounded-lg  border-buttonBlue border-4">
+      <div className="flex flex-col content-center md:flex-row justify-around w-full mt-10 flex-wrap">
+        <div className="bg-white  w-4/5 md:w-1/4 rounded-lg  border-buttonBlue border-4 m-5">
           <div className="flex justify-center flex-col flex-wrap content-center pt-10">
             <h1 className="text-4xl mb-3 text-darkBlue">Your Profile</h1>
             <p className="m-3">
@@ -70,7 +70,7 @@ function Profile() {
             </div>
           </div>
         </div>
-        <div className="bg-white w-1/4 rounded-lg  border-buttonBlue border-4">
+        <div className="bg-white  w-4/5 md:w-1/4 rounded-lg  border-buttonBlue border-4 m-5">
           <div className="flex justify-center flex-col flex-wrap content-center pt-5">
             <h2 className="text-4xl">Your bikes</h2>
             {currentUser?.host ? (
