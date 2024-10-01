@@ -66,7 +66,7 @@ function AddBike() {
             name="make"
             onChange={handleChanges}
             value={newBike.make}
-            className="m-5 w-fit rounded-lg p-1"
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -77,7 +77,7 @@ function AddBike() {
             name="model"
             onChange={handleChanges}
             value={newBike.model}
-            className="m-5 w-fit rounded-lg p-1"
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -88,7 +88,7 @@ function AddBike() {
             name="engine_size"
             onChange={handleChanges}
             value={newBike.engine_size}
-            className="m-5 w-fit rounded-lg p-1"
+            className="m-5 w-full md:w-3/6 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -99,7 +99,7 @@ function AddBike() {
             name="location"
             onChange={handleChanges}
             value={newBike.location}
-            className="m-5 w-fit rounded-lg p-1"
+            className="m-5 w-full md:w-1/2 rounded-lg p-1"
           ></input>
         </label>
         <label>
@@ -110,7 +110,7 @@ function AddBike() {
             name="price"
             onChange={handleChanges}
             value={newBike.price}
-            className="m-5 w-fit rounded-lg p-1"
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
           ></input>
         </label>
         <Button type="submit">Submit</Button>
