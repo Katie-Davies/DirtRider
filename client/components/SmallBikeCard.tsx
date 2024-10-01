@@ -40,15 +40,15 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
   }
 
   return (
-    <div key={bike.id}>
-      <h2 className="text-2xl">
+    <div key={bike.id} className="m-5 bg-slate-200 rounded-lg">
+      <h2 className="text-2xl ml-3 pt-4">
         {bike.make} {bike.model}
       </h2>
       {bike.image ? (
         <img src={`public/images/${bike.image}`} alt={bike.model} />
       ) : null}
 
-      <p>Daily Rate: ${bike.price}</p>
+      <p className="ml-3 mt-3">Daily Rate: ${bike.price}</p>
       <button
         className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-3"
         onClick={handleUpdate}
