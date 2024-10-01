@@ -13,7 +13,11 @@ function Login() {
     })
   }
 
-  return <Button onClick={handleLogin}> Log in</Button>
+  return (
+    <Button onClick={handleLogin} className="w-auto ">
+      Log in
+    </Button>
+  )
 }
 
 export default Login

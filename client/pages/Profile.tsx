@@ -44,41 +44,45 @@ function Profile() {
 
   if (user) {
     return (
-      <div>
-        <h1>Your Profile</h1>
+      <div className="flex justify-around">
         <div>
+          <h1 className="text-3xl">Your Profile</h1>
           <p>
             Name: {currentUser?.first_name} {currentUser?.last_name}
           </p>
           <p>Email: {currentUser?.email}</p>
           <p>Phone: {currentUser?.phone}</p>
-
-          {currentUser?.host ? (
+          <div>
             <Button
-              onClick={handleAddBike}
-              className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
+              onClick={handleClick}
+              className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-5"
             >
-              {' '}
-              Add Bike
+              Edit Profile
             </Button>
-          ) : null}
+          </div>
         </div>
         <div>
-          <Button
-            onClick={handleClick}
-            className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white"
-          >
-            Edit Profile
-          </Button>
-        </div>
-        {currentUser?.host && auth ? (
-          <HostBikes user={auth} />
-        ) : (
           <div>
-            <h2>My bikes</h2>
-            <p>No Hosted bikes</p>
+            <h2 className="text-2xl">Your bikes</h2>
+            {currentUser?.host ? (
+              <Button
+                onClick={handleAddBike}
+                className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-5"
+              >
+                {' '}
+                Add A Bike
+              </Button>
+            ) : null}
           </div>
-        )}
+
+          {currentUser?.host && auth ? (
+            <HostBikes user={auth} />
+          ) : (
+            <div>
+              <p>No Hosted bikes</p>
+            </div>
+          )}
+        </div>
       </div>
     )
   }
