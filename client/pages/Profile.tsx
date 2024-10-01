@@ -46,7 +46,7 @@ function Profile() {
     return (
       <div className="flex justify-around w-full mt-10">
         <div>
-          <h1 className="text-3xl">Your Profile</h1>
+          <h1 className="text-4xl mb-3">Your Profile</h1>
           <p>
             Name: {currentUser?.first_name} {currentUser?.last_name}
           </p>
@@ -63,7 +63,7 @@ function Profile() {
         </div>
         <div>
           <div>
-            <h2 className="text-2xl">Your bikes</h2>
+            <h2 className="text-4xl">Your bikes</h2>
             {currentUser?.host ? (
               <Button
                 onClick={handleAddBike}

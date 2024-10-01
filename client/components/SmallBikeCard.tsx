@@ -48,12 +48,12 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
         <img src={`public/images/${bike.image}`} alt={bike.model} />
       ) : null}
 
-      <p>${bike.price}</p>
+      <p>Daily Rate: ${bike.price}</p>
       <button
         className="border-4 border-customBlue rounded-md p-2 bg-customBlue text-white m-3"
         onClick={handleUpdate}
       >
-        Update Price
+        Update Daily Rate
       </button>
       {updatePrice ? (
         <>
@@ -76,7 +76,7 @@ function SmallBikeCard(bike: BikeId): JSX.Element {
             <button onClick={() => setUpdateOpen(true)}>Submit</button>
             {updateOpen ? (
               <Popup
-                text="Are you sure you want to update the price?"
+                text="Are you sure you want to update the daily rate?"
                 action={handleUpdatePrice}
                 content="update"
                 closePopup={() => setUpdateOpen(false)}
