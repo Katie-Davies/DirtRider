@@ -83,16 +83,28 @@ function BookingForm() {
       <>
         <h1>Booking Form</h1>
         <div className="flex flex-wrap">
-          <div className="w-64">
-            <h2>{bike.make}</h2>
-            <ul>
-              <li>
-                <strong>Model:</strong> {bike.model}
-              </li>
-              <li>Engine size: {bike.engine_size}</li>
-              <li>Location: {bike.location}</li>
-              <li>Price per day: $ {bike.price}</li>
-            </ul>
+          <div key={bike.id}>
+            <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-80">
+              <figure>
+                <img
+                  src={`/images/${bike.image}`}
+                  alt={bike.model}
+                  className="ml-3 mt-3 h-48 w-4/5 rounded"
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title text-darkBlue">{bike.make}</h2>
+                <ul>
+                  <li>
+                    <strong>Model:</strong> {bike.model}
+                  </li>
+                  <li>Engine size: {bike.engine_size}</li>
+
+                  <li>Location: {bike.location}</li>
+                  <li>Price per day: $ {bike.price}</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           {!confirmed ? (
