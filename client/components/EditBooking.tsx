@@ -1,7 +1,14 @@
 import { useParams } from 'react-router-dom'
 import { useGetBookingById } from '../hooks/useGetBookingById'
+import { useCallback, useEffect, useState } from 'react'
 
 function EditBooking() {
+  const [price, setPrice] = useState(0)
+  const [selectedDates, setSelectedDates] = useState<Date[]>([])
+  const dayCounter = useCallback(() => {
+    return selectedDates.length
+  }, [selectedDates])
+
   const bookingId = useParams().id
   console.log(bookingId)
   const {
@@ -9,6 +16,18 @@ function EditBooking() {
     isError,
     isLoading,
   } = useGetBookingById(Number(bookingId))
+
+  useEffect(() => {
+    const handleCost = () => {
+      const price = Number(booking?.price)
+      const days = dayCounter()
+      console.log(price, days)
+      setPrice(price * days)
+    }
+    if (selectedDates.length > 0) {
+      handleCost()
+    }
+  }, [booking?.price, dayCounter, selectedDates])
 
   if (isLoading) {
     return <div>Loading your booking..</div>
