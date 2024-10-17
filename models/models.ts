@@ -43,3 +43,10 @@ export interface BookingInfo extends Booking {
   price: number
   image: string
 }
+
+export interface UpdateBooking {
+  bookingId: number
+  start_date: string
+  end_date: string
+  price: number
+}

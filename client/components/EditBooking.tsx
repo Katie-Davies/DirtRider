@@ -1,13 +1,11 @@
 import { useParams } from 'react-router-dom'
 import { useGetBookingById } from '../hooks/useGetBookingById'
 import { useCallback, useEffect, useState } from 'react'
+import useUpdateBooking from '../hooks/useUpdateBooking'
 
 function EditBooking() {
   const [price, setPrice] = useState(0)
   const [selectedDates, setSelectedDates] = useState<Date[]>([])
-  const dayCounter = useCallback(() => {
-    return selectedDates.length
-  }, [selectedDates])
 
   const bookingId = useParams().id
   console.log(bookingId)
@@ -16,6 +14,21 @@ function EditBooking() {
     isError,
     isLoading,
   } = useGetBookingById(Number(bookingId))
+
+  const update = useUpdateBooking()
+
+  const handleSubmit = () => {
+    const bookingUpdate = {
+      bookingId: booking?.id,
+      start_date: selectedDates[0],
+      end_date: selectedDates[selectedDates.length - 1],
+      price: price,
+    }
+    update.mutate(bookingUpdate)
+  }
+  const dayCounter = useCallback(() => {
+    return selectedDates.length
+  }, [selectedDates])
 
   useEffect(() => {
     const handleCost = () => {
