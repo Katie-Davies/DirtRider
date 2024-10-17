@@ -81,23 +81,32 @@ function BookingForm() {
   if (bike) {
     return (
       <>
-        <h1>Booking Form</h1>
-        <div className="flex flex-wrap">
-          <div className="w-64">
-            <h2>{bike.make}</h2>
-            <ul>
-              <li>
-                <strong>Model:</strong> {bike.model}
-              </li>
-              <li>Engine size: {bike.engine_size}</li>
-              <li>Location: {bike.location}</li>
-              <li>Price per day: $ {bike.price}</li>
-            </ul>
+        <h1 className="text-3xl">Booking Form</h1>
+        <div className="flex flex-wrap w-full justify-around mt-10">
+          <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-80">
+            <figure>
+              <img
+                src={`/images/${bike.image}`}
+                alt={bike.model}
+                className="ml-3 mt-3 h-48 w-4/5 rounded"
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title text-darkBlue">{bike.make}</h2>
+              <ul>
+                <li>
+                  <strong>Model:</strong> {bike.model}
+                </li>
+                <li>Engine size: {bike.engine_size}</li>
+                <li>Location: {bike.location}</li>
+                <li>Price per day: $ {bike.price}</li>
+              </ul>
+            </div>
           </div>
 
           {!confirmed ? (
-            <div>
-              <h2>Select your dates</h2>
+            <div className="w-5/6 md:w-1/3 bg-white border-solid border-2  shadow-lg rounded-lg flex justify-center flex-col flex-wrap h-auto content-center my-3">
+              <h2 className="text-center text-2xl py-3">Select your dates</h2>
               <DatePicker
                 placeholderText="start"
                 onChange={handleDateChange} // Fix: Provide a default value for the date parameter
@@ -107,12 +116,21 @@ function BookingForm() {
                 selectsRange={true}
                 isClearable={true}
                 minDate={new Date()} //this stops user picking a date before today
+                className="w-full p-2 border-2 border-blue-500 rounded-lg text-lg focus:border-green-500"
               />
-              <p>You have selected dates:</p>
-              <p>{formatDate(startDate)}</p>
-              <p>{formatDate(endDate)}</p>
-              <p>${price}</p>
-              <Button onClick={handleConfirm}>Confirm booking</Button>
+              <h1 className="text-l font-bold my-5">
+                You have selected dates:
+              </h1>
+              <p>
+                {formatDate(startDate)} to {formatDate(endDate)}{' '}
+              </p>
+
+              <p className="text-green-800 font-bold my-5">
+                Total cost: ${price}
+              </p>
+              <Button onClick={handleConfirm} className="mb-2">
+                Confirm booking
+              </Button>
               {confirmBooking && (
                 <Popup
                   text="Are you sure you want to confirm this booking?"

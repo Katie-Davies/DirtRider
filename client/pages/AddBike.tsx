@@ -58,7 +58,7 @@ function AddBike() {
     <div>
       <h1 className="text-3xl">Add Bikes</h1>
       <form onSubmit={handleSubmit} className="flex flex-col flex-wrap ">
-        <label className="font-bold">
+        <label>
           Make:
           <input
             type="text"
