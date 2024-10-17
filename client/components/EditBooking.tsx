@@ -10,6 +10,12 @@ function EditBooking() {
     isLoading,
   } = useGetBookingById(Number(bookingId))
 
+  if (isLoading) {
+    return <div>Loading your booking..</div>
+  }
+  if (isError) {
+    return <div>Error retrieving Booking</div>
+  }
   console.log(booking)
   return (
     <div>
