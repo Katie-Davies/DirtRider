@@ -4,6 +4,7 @@ import {
   Bikes,
   Booking,
   BookingInfo,
+  UpdateBooking,
   User,
   UserId,
 } from '../../models/models'
@@ -92,9 +93,9 @@ export async function getBookingByHostId(id: string) {
   return booking.body as BookingInfo[]
 }
 
-export async function updateBooking(booking: Booking) {
+export async function updateBooking(booking: UpdateBooking) {
   const updatedBooking = await request
-    .put(`${rootUrl}/bookings/${booking.id}`)
+    .put(`${rootUrl}/bookings/${booking.bookingId}`)
     .send(booking)
   return updatedBooking.body as BookingInfo
 }
