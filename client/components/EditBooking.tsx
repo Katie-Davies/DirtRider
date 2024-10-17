@@ -12,7 +12,7 @@ function EditBooking() {
   const [selectedDates, setSelectedDates] = useState<Date[]>([])
 
   const bookingId = useParams().id
-  console.log(bookingId)
+
   const {
     data: booking,
     isError,
@@ -24,31 +24,40 @@ function EditBooking() {
     if (event.target.name === 'startDate') {
       setStartDate(new Date(event.target.value))
     }
-    const start = new Date(startDate)
+
     if (event.target.name === 'endDate') {
       setEndDate(new Date(event.target.value))
     }
-    const end = new Date(endDate)
-    const dateArray = []
-    for (
-      let d = new Date(format(start, 'yyyy-MM,dd'));
-      d <= end;
-      d.setDate(d.getDate() + 1)
-    ) {
-      dateArray.push(new Date(d))
-    }
-    setSelectedDates(dateArray)
-    console.log(selectedDates)
   }
+  console.log(booking?.bookingId)
+  useEffect(() => {
+    if (startDate && endDate) {
+      const start = new Date(startDate)
+      const end = new Date(endDate)
+      const dateArray = []
 
-  const handleSubmit = () => {
+      for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+        dateArray.push(new Date(d))
+      }
+
+      setSelectedDates(dateArray)
+    }
+  }, [startDate, endDate])
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault() // Prevent default form submission
+    if (!startDate || !endDate) {
+      console.error('Start date and end date must be selected')
+      return
+    }
     const bookingUpdate = {
-      bookingId: booking?.id,
+      id: booking?.bookingId,
       start_date: format(startDate ?? '', 'yyyy-MM-dd'),
       end_date: format(endDate ?? '', 'yyyy-MM-dd'),
       // price: price,
     }
     update.mutate(bookingUpdate)
+    console.log('booking updated successfully')
   }
   const dayCounter = useCallback(() => {
     return selectedDates.length

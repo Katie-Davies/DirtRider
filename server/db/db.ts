@@ -88,7 +88,12 @@ export async function updateBooking(id: number, data: UpdateBooking) {
 //get booking by id
 export async function getBookingById(id: number) {
   return await db('bookings')
-    .select()
+    .select(
+      'bookings.id as bookingId',
+      'bookings.*',
+      'bikes.id as bikeId',
+      'bikes.*',
+    )
     .where('bookings.id', id)
     .join('bikes', 'bikes.id', 'bookings.bike_id')
 }

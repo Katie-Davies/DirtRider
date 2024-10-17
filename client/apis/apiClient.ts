@@ -95,7 +95,7 @@ export async function getBookingByHostId(id: string) {
 
 export async function updateBooking(booking: UpdateBooking) {
   const updatedBooking = await request
-    .put(`${rootUrl}/bookings/${booking.bookingId}`)
+    .patch(`${rootUrl}/bookings/${booking.id}`)
     .send(booking)
   return updatedBooking.body as BookingInfo
 }
