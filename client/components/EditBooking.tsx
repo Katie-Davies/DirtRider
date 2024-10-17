@@ -125,8 +125,15 @@ function EditBooking() {
               min={format(startDate, 'yyyy-MM-dd')} // Prevent selecting an end date before the start date
             />
           </label>
+          <p>
+            <span>Number of days: {dayCounter()}</span>
+          </p>
+          <p>
+            <span>Total Price: </span>
+            {price}
+          </p>
           <Button type="submit" className="mt-4">
-            Confirm Booking
+            Confirm Update
           </Button>
         </form>
       </div>
