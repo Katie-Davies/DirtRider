@@ -41,6 +41,7 @@ function BookingForm() {
       user_id: user?.sub,
       start_date: format(startDate ?? '', 'yyyy-MM-dd'),
       end_date: format(endDate ?? '', 'yyyy-MM-dd'),
+      price: price,
     } as Booking
     console.log('Booking data:', bookingData)
     addBooking.mutate(bookingData)
