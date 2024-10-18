@@ -48,5 +48,5 @@ export interface UpdateBooking {
   id?: number
   start_date: string
   end_date: string
-  // price: number
+  price: number
 }

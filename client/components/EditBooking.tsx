@@ -54,7 +54,7 @@ function EditBooking() {
       id: booking?.bookingId,
       start_date: format(startDate ?? '', 'yyyy-MM-dd'),
       end_date: format(endDate ?? '', 'yyyy-MM-dd'),
-      // price: price,
+      price: price,
     }
     update.mutate(bookingUpdate)
     console.log('booking updated successfully')
