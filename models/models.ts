@@ -31,6 +31,7 @@ export interface Booking {
   user_id: string
   start_date: string
   end_date: string
+  price: number
 }
 
 export interface BookingInfo extends Booking {
