@@ -31,6 +31,7 @@ export interface Booking {
   user_id: string
   start_date: string
   end_date: string
+  price: number
 }
 
 export interface BookingInfo extends Booking {
@@ -42,4 +43,11 @@ export interface BookingInfo extends Booking {
   user_authid: string
   price: number
   image: string
+}
+
+export interface UpdateBooking {
+  id?: number
+  start_date: string
+  end_date: string
+  price: number
 }

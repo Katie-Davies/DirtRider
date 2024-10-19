@@ -36,6 +36,7 @@
     "knex": "^2.5.1",
     "react-bootstrap": "^2.10.2",
     "react-datepicker": "^6.9.0",
+    "sqlite": "^5.1.1",
     "sqlite3": "^5.1.6",
     "superagent": "^8.1.2"
   },

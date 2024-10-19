@@ -1,4 +1,10 @@
-import { Bikes, Booking, User, UserId } from '../../models/models'
+import {
+  Bikes,
+  Booking,
+  UpdateBooking,
+  User,
+  UserId,
+} from '../../models/models'
 import connection from './connection'
 
 const db = connection
@@ -75,11 +81,19 @@ export async function deleteBooking(id: number) {
 }
 
 // update booking
-export async function updateBooking(id: number, data: Booking) {
+export async function updateBooking(id: number, data: UpdateBooking) {
   return await db('bookings').where({ id }).update(data)
 }
 
 //get booking by id
 export async function getBookingById(id: number) {
-  return await db('bookings').select().where({ id })
+  return await db('bookings')
+    .select(
+      'bookings.id as bookingId',
+      'bookings.*',
+      'bikes.id as bikeId',
+      'bikes.*',
+    )
+    .where('bookings.id', id)
+    .join('bikes', 'bikes.id', 'bookings.bike_id')
 }

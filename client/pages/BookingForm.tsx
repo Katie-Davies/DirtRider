@@ -41,6 +41,7 @@ function BookingForm() {
       user_id: user?.sub,
       start_date: format(startDate ?? '', 'yyyy-MM-dd'),
       end_date: format(endDate ?? '', 'yyyy-MM-dd'),
+      price: price,
     } as Booking
     console.log('Booking data:', bookingData)
     addBooking.mutate(bookingData)
@@ -108,7 +109,7 @@ function BookingForm() {
             <div className="w-5/6 md:w-1/3 bg-white border-solid border-2  shadow-lg rounded-lg flex justify-center flex-col flex-wrap h-auto content-center my-3">
               <h2 className="text-center text-2xl py-3">Select your dates</h2>
               <DatePicker
-                placeholderText="start"
+                placeholderText="Pick a date"
                 onChange={handleDateChange} // Fix: Provide a default value for the date parameter
                 startDate={startDate}
                 endDate={endDate}
@@ -122,7 +123,11 @@ function BookingForm() {
                 You have selected dates:
               </h1>
               <p>
-                {formatDate(startDate)} to {formatDate(endDate)}{' '}
+                <span className="font-bold mb-3">From: </span>
+                {formatDate(startDate)}
+              </p>
+              <p>
+                <span>To:</span> {formatDate(endDate)}{' '}
               </p>
 
               <p className="text-green-800 font-bold my-5">
