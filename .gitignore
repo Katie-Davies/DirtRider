@@ -19,4 +19,4 @@ coverage/*
 # Build directory
 /dist
 
-.DS.Store
+.DS_Store
