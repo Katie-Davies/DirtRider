@@ -39,7 +39,7 @@ function HostBookings(currentUser: Props) {
   console.log(bookings)
   return (
     <div className="flex flex-col justify-around">
-      <div className="flex flex-col">
+      <div className="flex flex-col m-5">
         <h2 className="text-2xl"> Current bookings</h2>
         {current.map((booking) => {
           return (
