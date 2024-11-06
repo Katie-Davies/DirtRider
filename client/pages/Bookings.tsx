@@ -5,10 +5,12 @@ import { BookingInfo } from '../../models/models'
 import { BookingsCard } from '../components/BookingsCard'
 import { useAuth0 } from '@auth0/auth0-react'
 import HostBookings from '../components/HostBookings'
+import Button from '../components/Button'
 
 function Bookings() {
   const [current, setCurrent] = useState([] as BookingInfo[])
   const [previous, setPrevious] = useState([] as BookingInfo[])
+  const [display, setDisplay] = useState(5)
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10))
   const { user } = useAuth0()
   const currentUser = user?.sub
@@ -34,8 +36,17 @@ function Bookings() {
     setPrevious(newPrevious)
   }, [bookings, date])
 
+  const displayBookings = previous.slice(0, display)
+
   if (isError) return <div>There is an error in retrieving your bookings.</div>
   if (isLoading) return <div>Loading...</div>
+
+  const handleMore = () => {
+    setDisplay(display + 5)
+  }
+  const handleLess = () => {
+    setDisplay(display - 5)
+  }
 
   bookings
 
@@ -64,7 +75,7 @@ function Bookings() {
               </div>
               <div className="flex flex-col">
                 <h1 className="text-2xl">Your History</h1>
-                {previous.map((booking) => {
+                {displayBookings.map((booking) => {
                   return (
                     <BookingsCard
                       bookingId={booking.bookingId}
@@ -77,6 +88,15 @@ function Bookings() {
                     />
                   )
                 })}
+                {display < previous.length ? (
+                  <Button onClick={handleMore} className="m-5">
+                    Show More
+                  </Button>
+                ) : (
+                  <Button onClick={handleLess} className="m-5">
+                    Show Less
+                  </Button>
+                )}
               </div>
             </div>
           </div>
