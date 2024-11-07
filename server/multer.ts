@@ -19,21 +19,22 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 1000000 },
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb)
-  },
-}).single('image')
+})
+//   limits: { fileSize: 1000000 },
+//   fileFilter: function (req, file, cb) {
+//     checkFileType(file, cb)
+//   },
+// })
 
-function checkFileType(file, cb) {
-  const fileType = /jpeg|jpg|png|gif/
-  const extname = fileType.test(Path.extname(file.originalname).toLowerCase())
-  const mimetype = fileType.test(file.mimetype)
-  if (extname && mimetype) {
-    return cb(null, true)
-  } else {
-    cb('Error: Images Only!')
-  }
-}
+// function checkFileType(file, cb) {
+//   const fileType = /jpeg|jpg|png|gif/
+//   const extname = fileType.test(Path.extname(file.originalname).toLowerCase())
+//   const mimetype = fileType.test(file.mimetype)
+//   if (extname && mimetype) {
+//     return cb(null, true)
+//   } else {
+//     cb('Error: Images Only!')
+//   }
+// }
 
 export default upload

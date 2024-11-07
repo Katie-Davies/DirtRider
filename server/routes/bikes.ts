@@ -45,17 +45,16 @@ router.get('/user/:id', async (req, res) => {
 router.post(
   '/',
   checkJwt,
-  (req, res, next) => {
-    upload(req, res, function (err) {
-      if (err) {
-        return res.status(400).json({ message: err.message })
-      }
-      next()
-    })
-  },
+  upload.single('image'),
+
   async (req: JwtRequest, res) => {
     const data = req.body
     const user = req.auth?.sub
+
+    if (!req.file) {
+      console.log('No file uploaded.')
+      return res.status(400).send('No file uploaded.')
+    }
 
     if (!user) {
       res.status(401).json({ message: 'Unauthorised' })

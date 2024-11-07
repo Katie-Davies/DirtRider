@@ -27,9 +27,13 @@ function AddBike() {
     e.preventDefault()
     try {
       const token = await getAccessTokenSilently()
-      const data = { ...newBike, user_authid: id ?? '' }
+      const data = new FormData()
+      for (const key in newBike) {
+        data.append(key, newBike[key])
+      }
+      // const data = { ...newBike, user_authid: id ?? '' }
       await addBike.mutate({ data, token }) // Ensure `mutateAsync` is used for async operations
-
+      console.log(newBike)
       console.log('bike added')
       setNewBike({
         make: '',
@@ -37,7 +41,6 @@ function AddBike() {
         engine_size: '',
         location: 0,
         user_authid: id,
-        price: 0,
         image: null,
       })
 
