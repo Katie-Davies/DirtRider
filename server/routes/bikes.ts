@@ -62,7 +62,7 @@ router.post(
     try {
       const userExists = await db.getUserById(user ?? '')
       if (userExists[0].host) {
-        const imagePaths = req.file?.path
+        const imagePaths = req.file?.filename
         data.image = imagePaths
 
         await db.addBike(data)
