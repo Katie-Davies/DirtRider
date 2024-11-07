@@ -45,7 +45,14 @@ router.get('/user/:id', async (req, res) => {
 router.post(
   '/',
   checkJwt,
-  upload.single('image'),
+  (req, res, next) => {
+    upload(req, res, function (err) {
+      if (err) {
+        return res.status(400).json({ message: err.message })
+      }
+      next()
+    })
+  },
   async (req: JwtRequest, res) => {
     const data = req.body
     const user = req.auth?.sub
