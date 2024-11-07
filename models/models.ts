@@ -18,7 +18,7 @@ export interface Bikes {
   location: number
   user_authid: string
   price: number
-  image: string
+  image: [string]
 }
 
 export interface BikeId extends Bikes {

@@ -45,7 +45,7 @@ router.get('/user/:id', async (req, res) => {
 router.post(
   '/',
   checkJwt,
-  upload.array('bike', 5),
+  upload.single('image'),
   async (req: JwtRequest, res) => {
     const data = req.body
     const user = req.auth?.sub
@@ -56,10 +56,8 @@ router.post(
     try {
       const userExists = await db.getUserById(user ?? '')
       if (userExists[0].host) {
-        const imagePaths = (req.files as Express.Multer.File[])?.map(
-          (file) => file.path,
-        )
-        data.imagePaths = imagePaths
+        const imagePaths = req.file?.path
+        data.image = imagePaths
 
         await db.addBike(data)
         res.status(201).send('Bike added')

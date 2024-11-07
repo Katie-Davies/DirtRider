@@ -48,16 +48,33 @@ function AddBike() {
 
   function handleChanges(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
-    setNewBike({
-      ...newBike,
-      [name]: value,
-    })
+    if (name === 'image') {
+      setNewBike({
+        ...newBike,
+        image: e.target.files?.[0],
+      })
+    } else {
+      setNewBike({
+        ...newBike,
+        [name]: value,
+      })
+    }
   }
 
   return (
     <div>
       <h1 className="text-3xl">Add Bikes</h1>
       <form onSubmit={handleSubmit} className="flex flex-col flex-wrap ">
+        <label>
+          Image:
+          <input
+            type="file"
+            name="image"
+            onChange={handleChanges}
+            value={newBike.image}
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
+          ></input>
+        </label>
         <label>
           Make:
           <input
