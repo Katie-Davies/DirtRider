@@ -74,6 +74,7 @@ export async function getHostsBookings(id: string) {
     .select('bookings.id as bookingId', 'bookings.*', 'bikes.*')
     .join('bikes', 'bikes.id', 'bookings.bike_id')
     .where('bikes.user_authid', id)
+    .orderBy('bookings.start_date', 'desc')
 }
 
 //delete a booking
