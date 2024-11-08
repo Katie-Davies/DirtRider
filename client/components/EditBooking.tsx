@@ -29,7 +29,7 @@ function EditBooking() {
       setEndDate(new Date(event.target.value))
     }
   }
-  console.log(booking?.bookingId)
+
   useEffect(() => {
     if (startDate && endDate) {
       const start = new Date(startDate)
@@ -67,7 +67,7 @@ function EditBooking() {
     const handleCost = () => {
       const price = Number(booking?.price)
       const days = dayCounter()
-      console.log(price, days)
+      // console.log(price, days)
       setPrice(price * days)
     }
     if (selectedDates.length > 0) {
@@ -81,7 +81,7 @@ function EditBooking() {
   if (isError) {
     return <div>Error retrieving Booking</div>
   }
-  console.log(booking)
+  // console.log(booking)
   return (
     <div>
       <h1>Edit Booking</h1>

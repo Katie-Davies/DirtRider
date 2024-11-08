@@ -44,7 +44,7 @@ export function BookingsCard(booking: Props) {
   const handleRebook = () => {
     navigate(`/bikes/${booking.bike_id}/booking`)
   }
-  console.log(booking.bike_id)
+
   return (
     <div key={booking.bookingId}>
       <div className="card bg-white mt-7 h-auto border-2 w-96 shadow-lg">
