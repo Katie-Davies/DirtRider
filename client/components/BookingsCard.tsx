@@ -7,6 +7,7 @@ import { useState } from 'react'
 
 interface Props {
   key: number
+  bike_id: number
   bookingId: number
   make: string
   model: string
@@ -40,6 +41,10 @@ export function BookingsCard(booking: Props) {
   const formatDate = (dateString: string) => {
     return dateString.split('-').reverse().join('/')
   }
+  const handleRebook = () => {
+    navigate(`/bikes/${booking.bike_id}/booking`)
+  }
+
   return (
     <div key={booking.bookingId}>
       <div className="card bg-white mt-7 h-auto border-2 w-96 shadow-lg">
@@ -77,7 +82,15 @@ export function BookingsCard(booking: Props) {
                 )}
               </div>
             </div>
-          ) : null}
+          ) : (
+            // ) : null
+            <Button
+              className="btn bg-customBlue text-white"
+              onClick={handleRebook}
+            >
+              Book
+            </Button>
+          )}
         </div>
       </div>
     </div>

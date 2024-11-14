@@ -4,19 +4,20 @@ import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import Button from '../components/Button'
 import useAddBike from '../hooks/useAddBike'
+import { NewBike } from '../../models/models'
 
 function AddBike() {
   const { getAccessTokenSilently } = useAuth0()
   const user = useParams()
   const id = user.id
-  const [newBike, setNewBike] = useState({
+  const [newBike, setNewBike] = useState<NewBike>({
     make: '',
     model: '',
     engine_size: '',
     location: 0,
     user_authid: id,
     price: 0,
-    image: '',
+    image: null,
   })
   const navigate = useNavigate()
 
@@ -26,9 +27,13 @@ function AddBike() {
     e.preventDefault()
     try {
       const token = await getAccessTokenSilently()
-      const data = { ...newBike, user_authid: id ?? '' }
+      const data = new FormData()
+      for (const key in newBike) {
+        data.append(key, newBike[key])
+      }
+      // const data = { ...newBike, user_authid: id ?? '' }
       await addBike.mutate({ data, token }) // Ensure `mutateAsync` is used for async operations
-
+      console.log(newBike)
       console.log('bike added')
       setNewBike({
         make: '',
@@ -36,8 +41,7 @@ function AddBike() {
         engine_size: '',
         location: 0,
         user_authid: id,
-        price: 0,
-        image: '',
+        image: null,
       })
 
       navigate('/profile')
@@ -48,16 +52,34 @@ function AddBike() {
 
   function handleChanges(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target
+
     setNewBike({
       ...newBike,
       [name]: value,
     })
   }
 
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setNewBike({ ...newBike, image: e.target.files[0] })
+  }
+
   return (
     <div>
       <h1 className="text-3xl">Add Bikes</h1>
-      <form onSubmit={handleSubmit} className="flex flex-col flex-wrap ">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col flex-wrap "
+        encType="multipart/form-data"
+      >
+        <label>
+          Image:
+          <input
+            type="file"
+            name="image"
+            onChange={handleFileChange}
+            className="m-5 w-full md:w-4/6 rounded-lg p-1"
+          ></input>
+        </label>
         <label>
           Make:
           <input

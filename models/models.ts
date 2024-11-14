@@ -18,7 +18,7 @@ export interface Bikes {
   location: number
   user_authid: string
   price: number
-  image: string
+  image: [string]
 }
 
 export interface BikeId extends Bikes {
@@ -50,4 +50,14 @@ export interface UpdateBooking {
   start_date: string
   end_date: string
   price: number
+}
+
+export interface NewBike {
+  make: string
+  model: string
+  engine_size: string
+  location: number
+  user_authid: string
+  price: number
+  image: File | null
 }

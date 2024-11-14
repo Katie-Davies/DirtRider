@@ -20,7 +20,7 @@ export function BikeCard(bike: Props) {
       <div className="card bg-customBlue shadow-xl  h-auto cursor-pointer relative m-5 w-80">
         <figure>
           <img
-            src={`/images/${bike.image}`}
+            src={`../uploads/${bike.image}`}
             alt={bike.model}
             className="ml-3 mt-3 h-48 w-4/5 rounded"
           />

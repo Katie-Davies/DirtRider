@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import checkJwt, { JwtRequest } from '../auth0'
+import upload from '../multer'
 
 import * as db from '../db/db'
 
@@ -41,24 +42,38 @@ router.get('/user/:id', async (req, res) => {
 })
 
 //add a bike
-router.post('/', checkJwt, async (req: JwtRequest, res) => {
-  const data = req.body
-  const user = req.auth?.sub
+router.post(
+  '/',
+  checkJwt,
+  upload.single('image'),
 
-  if (!user) {
-    res.status(401).json({ message: 'Unauthorised' })
-  }
-  try {
-    const userExists = await db.getUserById(user ?? '')
-    if (userExists[0].host) {
-      await db.addBike(data)
-      res.status(201).send('Bike added')
+  async (req: JwtRequest, res) => {
+    const data = req.body
+    const user = req.auth?.sub
+
+    if (!req.file) {
+      console.log('No file uploaded.')
+      return res.status(400).send('No file uploaded.')
     }
-  } catch (error) {
-    console.log(error)
-    res.status(500).json({ message: 'An error occurred, bike was not added' })
-  }
-})
+
+    if (!user) {
+      res.status(401).json({ message: 'Unauthorised' })
+    }
+    try {
+      const userExists = await db.getUserById(user ?? '')
+      if (userExists[0].host) {
+        const imagePaths = req.file?.filename
+        data.image = imagePaths
+
+        await db.addBike(data)
+        res.status(201).send('Bike added')
+      }
+    } catch (error) {
+      console.log(error)
+      res.status(500).json({ message: 'An error occurred, bike was not added' })
+    }
+  },
+)
 
 //update bike
 router.patch('/:id', async (req, res) => {

@@ -62,6 +62,7 @@ function Bookings() {
                 {current.map((booking) => {
                   return (
                     <BookingsCard
+                      bike_id={booking.bike_id}
                       bookingId={booking.bookingId}
                       key={booking.bookingId}
                       model={booking.model}
@@ -78,6 +79,7 @@ function Bookings() {
                 {displayBookings.map((booking) => {
                   return (
                     <BookingsCard
+                      bike_id={booking.bike_id}
                       bookingId={booking.bookingId}
                       key={booking.bookingId}
                       model={booking.model}

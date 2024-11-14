@@ -4,6 +4,7 @@ import {
   Bikes,
   Booking,
   BookingInfo,
+  NewBike,
   UpdateBooking,
   User,
   UserId,
@@ -26,7 +27,7 @@ export async function addBike({
   data,
   token,
 }: {
-  data: Bikes
+  data: NewBike
   token: string
 }): Promise<any> {
   const newBike = await request

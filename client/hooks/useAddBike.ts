@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { addBike } from '../apis/apiClient'
-import { Bikes } from '../../models/models'
+import { Bikes, NewBike } from '../../models/models'
 
 // export default function useAddBike() {
 //   const client = useQueryClient()
@@ -14,7 +14,7 @@ import { Bikes } from '../../models/models'
 const useAddBike = () => {
   const queryClient = useQueryClient()
 
-  return useMutation<any, Error, { data: Bikes; token: string }>({
+  return useMutation<any, Error, { data: NewBike; token: string }>({
     // Adjust types as per your actual data structure
     mutationFn: ({ data, token }) => addBike({ data, token }), // Arrow function to call addBike with parameters
 
